@@ -1,0 +1,23 @@
+@import "./normalize.scss";
+
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    line-height: 1.42;
+    margin: 0;
+    color: #304455;
+    background: #f4f4f4;
+}
+
+input[type=radio]{
+    vertical-align: middle;
+    width: 1.2em;
+    height: 1.2em;
+}
+
+.form-control{
+    width:100%;
+    padding:6px 12px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
