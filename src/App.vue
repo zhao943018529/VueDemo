@@ -1,7 +1,8 @@
 <template>
     <div class="app-contianer">
         <AddTodo />
-        <TodoList />
+        <TodoList v-bind:type="filterType" />
+        <TodoFilters v-bind:type="filterType" v-on:filterTodo="filterTodo"/>
     </div>
 </template>
 
@@ -9,6 +10,7 @@
 
 import AddTodo from './components/AddTodo.vue';
 import TodoList from './components/TodoList.vue';
+import TodoFilters from './components/TodoFilters.vue';
 import _ from 'lodash';
 
 export default {
@@ -16,13 +18,19 @@ export default {
     components:{
         AddTodo,
         TodoList,
+        TodoFilters,
     },
-    // data(){
-    //     return {
-    //         todos:[],
-    //     }
-    // },
-    // methods:
+    data(){
+        return {
+            filterType:'',
+        }
+    },
+    methods:{
+        filterTodo(type){
+            debugger;
+            this.filterType=type;
+        }
+    }
     // {
     //     addTodo(name){
     //         this.todos.push({id:_.uniqueId('todo'),name:name,completed:false});

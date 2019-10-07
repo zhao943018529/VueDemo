@@ -14,11 +14,26 @@ import TodoItem from './TodoItem.vue';
 
 export default {
     name:'todolist',
+    props:['type'],
     components:{
         TodoItem,
     },
-    computed:mapState({
-        todos:state=>state.todos,
-    }),
+    computed:{
+        ...mapState({
+        originalTodos:state => state.todos,
+        }),
+        todos(){
+            return !this.type?
+            this.originalTodos:this.filterHelper(this.type==='completed')(this.originalTodos)
+        }
+    },
+    methods:{
+        filterHelper(isCompleted){
+            return todos=>todos.filter(todo=>todo.completed===isCompleted);
+        }
+    },
+    beforeUpdate(){
+        debugger;
+    }
 }
 </script>

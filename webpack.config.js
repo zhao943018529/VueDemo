@@ -47,6 +47,11 @@ module.exports = {
           }
       ]
   },
+  resolve: {
+    alias: {
+      vue: 'vue/dist/vue.js',
+    }
+  },
   optimization: {
     minimizer: [
       new UglifyjsWebpackPlugin({   // 生产环境压缩JS
