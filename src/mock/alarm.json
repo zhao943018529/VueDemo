@@ -1,0 +1,302 @@
+{
+      "children": [
+        {
+          "children": [
+                {
+              "children": null,
+              "className": "node",
+              "clientId": "60f0e54d-d846-40a1-84a2-caa76fea6ba3",
+              "id": "63268_1566779976002",
+              "name": "conhost.exe",
+              "threat": false,
+              "trigger": false
+                },
+                {
+              "children": [
+                        {
+                  "children": null,
+                  "className": "node",
+                  "clientId": "60f0e54d-d846-40a1-84a2-caa76fea6ba3",
+                  "id": "63268_156677997600aa",
+                  "name": "conhost.exe",
+                  "threat": false,
+                  "trigger": false
+                        },
+                        {
+                  "children": null,
+                  "className": "node",
+                  "clientId": "60f0e54d-d846-40a1-84a2-caa76fea6ba3",
+                  "id": "63268_156677997600bb",
+                  "name": "conhost.exe",
+                  "threat": false,
+                  "trigger": false
+                        }
+                    ],
+              "className": "node",
+              "clientId": "60f0e54d-d846-40a1-84a2-caa76fea6ba3",
+              "id": "63268_1566779976003",
+              "name": "conhost.exe",
+              "threat": false,
+              "trigger": false
+                },
+                {
+              "children": [
+                        {
+                  "children": [
+                                {
+                      "children": [
+                                        {
+                          "children": [
+                                                {
+                              "children": null,
+                              "className": "node",
+                              "clientId": "60f0e54d-d846-40a1-84a2-caa76fea6ba3",
+                              "id": "63268_156677997600j",
+                              "name": "conhost.exe",
+                              "threat": false,
+                              "trigger": false
+                                                },
+                                                {
+                              "children": null,
+                              "className": "node",
+                              "clientId": "60f0e54d-d846-40a1-84a2-caa76fea6ba3",
+                              "id": "63268_156677997600h",
+                              "name": "conhost.exe",
+                              "threat": false,
+                              "trigger": false
+                                                }
+                                            ],
+                          "className": "node",
+                          "clientId": "60f0e54d-d846-40a1-84a2-caa76fea6ba3",
+                          "id": "63268_156677997600f",
+                          "name": "conhost.exe",
+                          "threat": false,
+                          "trigger": false
+                                        },
+                                        {
+                          "children": [
+                                                {
+                              "children": null,
+                              "className": "node",
+                              "clientId": "60f0e54d-d846-40a1-84a2-caa76fea6ba3",
+                              "id": "63268_156677997600g",
+                              "name": "conhost.exe",
+                              "threat": false,
+                              "trigger": false
+                                                },
+                                                {
+                              "children": null,
+                              "className": "node",
+                              "clientId": "60f0e54d-d846-40a1-84a2-caa76fea6ba3",
+                              "id": "63268_156677997600k",
+                              "name": "conhost.exe",
+                              "threat": false,
+                              "trigger": false
+                                                }
+                                            ],
+                          "className": "node",
+                          "clientId": "60f0e54d-d846-40a1-84a2-caa76fea6ba3",
+                          "id": "63268_156677997600l",
+                          "name": "conhost.exe",
+                          "threat": false,
+                          "trigger": false
+                                        }
+                                    ],
+                      "className": "node",
+                      "clientId": "60f0e54d-d846-40a1-84a2-caa76fea6ba3",
+                      "id": "63268_1566779976007",
+                      "name": "conhost.exe",
+                      "threat": false,
+                      "trigger": false
+                                },
+                                {
+                      "children": [
+                                        {
+                          "children": null,
+                          "className": "node",
+                          "clientId": "60f0e54d-d846-40a1-84a2-caa76fea6ba3",
+                          "id": "63268_156677997600a",
+                          "name": "conhost.exe",
+                          "threat": false,
+                          "trigger": false
+                                        },
+                                        {
+                          "children": null,
+                          "className": "node",
+                          "clientId": "60f0e54d-d846-40a1-84a2-caa76fea6ba3",
+                          "id": "63268_156677997600b",
+                          "name": "conhost.exe",
+                          "threat": false,
+                          "trigger": false
+                                        },
+                                        {
+                          "children": null,
+                          "className": "node",
+                          "clientId": "60f0e54d-d846-40a1-84a2-caa76fea6ba3",
+                          "id": "63268_156677997600c",
+                          "name": "conhost.exe",
+                          "threat": false,
+                          "trigger": false
+                                        }
+                                    ],
+                      "className": "node",
+                      "clientId": "60f0e54d-d846-40a1-84a2-caa76fea6ba3",
+                      "id": "63268_1566779976008",
+                      "name": "conhost.exe",
+                      "threat": false,
+                      "trigger": false
+                                }
+                            ],
+                  "className": "middle-level",
+                  "clientId": "60f0e54d-d846-40a1-84a2-caa76fea6ba3",
+                  "id": "63268_1566779976006",
+                  "name": "conhost.exe",
+                  "threat": false,
+                  "trigger": false
+                        },
+                        {
+                  "children": [
+                                {
+                      "children": [
+                                        {
+                          "children": null,
+                          "className": "node",
+                          "clientId": "60f0e54d-d846-40a1-84a2-caa76fea6ba3",
+                          "id": "63268_156677997600m",
+                          "name": "conhost.exe",
+                          "threat": false,
+                          "trigger": false
+                                        },
+                                        {
+                          "children": null,
+                          "className": "node",
+                          "clientId": "60f0e54d-d846-40a1-84a2-caa76fea6ba3",
+                          "id": "63268_156677997600n",
+                          "name": "conhost.exe",
+                          "threat": false,
+                          "trigger": false
+                                        }
+                                    ],
+                      "className": "node",
+                      "clientId": "60f0e54d-d846-40a1-84a2-caa76fea6ba3",
+                      "id": "63268_156677997600o",
+                      "name": "conhost.exe",
+                      "threat": false,
+                      "trigger": false
+                                },
+                                {
+                      "children": null,
+                      "className": "node",
+                      "clientId": "60f0e54d-d846-40a1-84a2-caa76fea6ba3",
+                      "id": "63268_156677997600p",
+                      "name": "conhost.exe",
+                      "threat": false,
+                      "trigger": false
+                                },
+                                {
+                      "children": [
+                                        {
+                          "children": [
+                                                {
+                              "children": null,
+                              "className": "node",
+                              "clientId": "60f0e54d-d846-40a1-84a2-caa76fea6ba3",
+                              "id": "63268_156677997600q",
+                              "name": "conhost.exe",
+                              "threat": false,
+                              "trigger": false
+                                                },
+                                                {
+                              "children": [
+                                                        {
+                                  "children": null,
+                                  "className": "node",
+                                  "clientId": "60f0e54d-d846-40a1-84a2-caa76fea6ba3",
+                                  "id": "63268_156677997600r",
+                                  "name": "conhost.exe",
+                                  "threat": false,
+                                  "trigger": false
+                                                        },
+                                                        {
+                                  "children": null,
+                                  "className": "node",
+                                  "clientId": "60f0e54d-d846-40a1-84a2-caa76fea6ba3",
+                                  "id": "63268_156677997600s",
+                                  "name": "conhost.exe",
+                                  "threat": false,
+                                  "trigger": false
+                                                        },
+                                                        {
+                                  "children": null,
+                                  "className": "node",
+                                  "clientId": "60f0e54d-d846-40a1-84a2-caa76fea6ba3",
+                                  "id": "63268_156677997600t",
+                                  "name": "conhost.exe",
+                                  "threat": false,
+                                  "trigger": false
+                                                        }
+                                                    ],
+                              "className": "node",
+                              "clientId": "60f0e54d-d846-40a1-84a2-caa76fea6ba3",
+                              "id": "63268_156677997600u",
+                              "name": "conhost.exe",
+                              "threat": false,
+                              "trigger": false
+                                                }
+                                            ],
+                          "className": "node",
+                          "clientId": "60f0e54d-d846-40a1-84a2-caa76fea6ba3",
+                          "id": "63268_156677997600v",
+                          "name": "conhost.exe",
+                          "threat": false,
+                          "trigger": false
+                                        }
+                                    ],
+                      "className": "node",
+                      "clientId": "60f0e54d-d846-40a1-84a2-caa76fea6ba3",
+                      "id": "63268_156677997600z",
+                      "name": "conhost.exe",
+                      "threat": false,
+                      "trigger": false
+                                }
+                            ],
+                  "className": "node",
+                  "clientId": "60f0e54d-d846-40a1-84a2-caa76fea6ba3",
+                  "id": "63268_156677997600x",
+                  "name": "conhost.exe",
+                  "threat": false,
+                  "trigger": false
+                        }
+                    ],
+              "className": "node",
+              "clientId": "60f0e54d-d846-40a1-84a2-caa76fea6ba3",
+              "id": "63268_1566779976004",
+              "name": "conhost.exe",
+              "threat": false,
+              "trigger": false
+                },
+                {
+              "children": null,
+              "className": "node",
+              "clientId": "60f0e54d-d846-40a1-84a2-caa76fea6ba3",
+              "id": "63268_156677997600y",
+              "name": "conhost.exe",
+              "threat": false,
+              "trigger": false
+                }
+            ],
+          "className": "node",
+          "clientId": "60f0e54d-d846-40a1-84a2-caa76fea6ba3",
+          "id": "26880_1566779976001",
+          "name": "schtasks.exe",
+          "threat": true,
+          "trigger": false
+        }
+    ],
+      "className": "node",
+      "clientId": "60f0e54d-d846-40a1-84a2-caa76fea6ba3",
+      "id": "3676_1565784628000",
+      "name": "Lenovo.Modern.ImController.exe",
+      "threat": false,
+      "trigger": false
+}

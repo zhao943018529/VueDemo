@@ -1,5 +1,7 @@
 import App from '../App_r.vue';
 import MyTodos from '../components/MyTodos.vue';
+import ESTree from '../components/ESTree.vue';
+import HChart from '../components/HChart.vue';
 
 
 export default [{
@@ -11,5 +13,11 @@ export default [{
     }, {
         path: '/:type',
         component: MyTodos
+    }, {
+        path: '/tree/index',
+        component: ESTree,
+    }, {
+        path: '/htree/index',
+        component: HChart,
     }]
 }];

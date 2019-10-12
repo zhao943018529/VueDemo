@@ -6,6 +6,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const UglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin');
 const WebpackBundleSizeAnalyzerPlugin = require('webpack-bundle-size-analyzer').WebpackBundleSizeAnalyzerPlugin;
 const autoprefixer = require('autoprefixer');
+const copyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {    
   entry: './src/main.js',
@@ -82,6 +83,10 @@ module.exports = {
           title:"VueDemo",
           template:'./src/index.html'
       }),
+      new copyWebpackPlugin([{
+        from: __dirname + '/src/images',
+        to: __dirname + '/dist/images'
+      }]),
       new CleanWebpackPlugin(),
       new VueLoaderPlugin()
   ],
