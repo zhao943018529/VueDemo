@@ -6,17 +6,18 @@
 
 <script>
 import _ from "lodash";
-import highCharts from "highcharts";
 import exporting from "highcharts/modules/exporting";
 import { getFilterData, getChildren, deepFilter } from "./hutil";
 import alarmData from "../mock/alarm";
 import * as Highcharts from "highcharts";
 import HighchartsSankey from "highcharts/modules/sankey";
 import HighchartsOrganization from "highcharts/modules/organization";
+import highDragDrop from "highcharts/modules/draggable-points";
 import HighchartsExporting from "highcharts/modules/exporting";
 HighchartsSankey(Highcharts);
 HighchartsOrganization(Highcharts);
 HighchartsExporting(Highcharts);
+highDragDrop(Highcharts);
 // var Highcharts = require('highcharts');
 // console.log(Highcharts);
 // Load module after Highcharts is loaded
@@ -49,9 +50,21 @@ export default {
     this.chart = Highcharts.chart(this.$refs.panel, {
       chart: {
         height: 600,
-        inverted: false
+        inverted: false,
+        backgroundColor:"#f4f4f4",
       },
-
+      annotations:[{
+        controlPointOptions:{
+          height:10,
+          symbol:"circle",
+          visible:true,
+          width:10,
+        },
+        draggable:"xy",
+        labels:[{
+          
+        }],
+      }],
       title: {
         text: "Highcharts Org Chart"
       },
@@ -63,16 +76,28 @@ export default {
           keys: ["from", "to"],
           data: this.showData.data,
           nodes: this.showData.nodes,
+          dataLabels: {
+            color: "orange",
+            style:{
+              color:'contrast',
+              fontSize:"16px"
+            },
+          },
+          dragDrop:{
+            draggableX:true,
+            draggableY:true,
+          },
           events: {
-            click: e => this.toggleShow(e.point)
+            click: e => {
+            // debugger;
+            this.toggleShow(e.point);
+            }
           },
           colorByPoint: false,
           color: "#007ad0",
-          dataLabels: {
-            color: "white"
-          },
           borderColor: "white",
-          nodeWidth: 65
+          nodeWidth: 120,
+          nodeHeight:60
         }
       ],
       tooltip: {
@@ -139,5 +164,9 @@ export default {
 .painter {
   width: 800px;
   height: 600px;
+}
+
+.myhighchart{
+  max-height:60px;
 }
 </style>
