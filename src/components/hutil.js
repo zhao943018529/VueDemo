@@ -167,11 +167,11 @@ function convertDiagramData(data) {
 }
 
 function dfsConvert(data, parentId) {
-    if(data&&data.length==0)return [];
+    if (data && data.length == 0) return [];
 
     return _.reduce(data, (acc, cur) => {
         acc.push(createNode(cur, parentId));
-        Array.prototype.push.apply(acc, 
+        Array.prototype.push.apply(acc,
             dfsConvert(cur.children, cur.id));
         return acc;
     }, []);
@@ -182,12 +182,12 @@ function createNode(obj, parentId) {
         key: obj.id,
         text: obj.name,
         fill: obj.threat ? '#f68c06' : '#ccc',
-        source: "https://image.flaticon.com/icons/png/512/69/69524.png"
+        source: "https://image.flaticon.com/icons/png/512/69/69524.png",
+        visible: obj.threat || !parentId,
     };
-    if(parentId){
-        result.parent=parentId;
+    if (parentId) {
+        result.parent = parentId;
     }
-
     return result;
 }
 

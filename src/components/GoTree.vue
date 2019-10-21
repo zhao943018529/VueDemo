@@ -37,7 +37,8 @@ export default {
 
           this.instance.nodeTemplate =
         $(go.Node, "Horizontal",
-          { selectionObjectName: "BODY" },
+          { selectionObjectName: "BODY" ,isTreeExpanded: true},
+          $(go.Panel,'Vertical',
           $(go.Panel, "Auto", { name: "BODY" },
             $(go.Shape, "RoundedRectangle",
               new go.Binding("fill"),
@@ -45,8 +46,21 @@ export default {
             $(go.Picture,new go.Binding("source"),{width:20,height:20,alignment:go.Spot.LeftCenter}),
             $(go.TextBlock,
               { font: "bold 12pt Arial, sans-serif", margin: new go.Margin(4, 2, 2, 2) },
-              new go.Binding("text"))
-          ),
+              new go.Binding("text","text")),{
+                click:function(e,node){
+                  debugger;
+                }
+              }
+          ),$('SubGraphExpanderButton',
+            { alignment: go.Spot.Left,click:function(a,b){
+              debugger;
+              if(b.part.wasTreeExpanded){
+                b.part.collapseTree();
+              }else{
+                b.part.expandTree();
+              }
+              
+            } })),
           $(go.Panel,  // this is underneath the "BODY"
             { height: 17 },  // always this height, even if the TreeExpanderButton is not visible
             $("TreeExpanderButton")
@@ -58,6 +72,9 @@ export default {
           this.instance.model =
         $(go.TreeModel,
           { nodeDataArray: this.nodeArray });
+          // this.instance.addDiagramListener('ObjectSingleClicked',function(a,b){
+          //   debugger;
+          // });
   }
 };
 </script>

@@ -10,6 +10,13 @@
         </el-option>
       </el-select>
     </div>
+    <TestJSX name="5555-99999999999">
+      <Option key="aaa" value="bbbb" />
+      <Option key="bbbb" value="ccccc" />
+      <Option key="dddd" value="eee" />
+      <Option key="ffff" value="ggggg" />
+      <Option key="kkkk" value="jjjjj" />
+    </TestJSX>
   </div>
 </template>
 
@@ -19,6 +26,8 @@ import TodoList from "./TodoList_r.vue";
 import TodoFooter from "./TodoFooter.vue";
 import ElSelect from "../controls/select.vue";
 import ElOption from "../controls/option.vue";
+import TestJSX from './TestJSX.jsx';
+import Option from './Option.jsx';
 
 export default {
   name: "mytodos",
@@ -49,7 +58,9 @@ export default {
     TodoList,
     TodoFooter,
     ElSelect,
-    ElOption
+    ElOption,
+    TestJSX,
+    Option,
   },
   beforeMount() {
     console.log("i am iron");
