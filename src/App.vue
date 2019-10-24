@@ -68,4 +68,14 @@ export default {
         margin:0;
         padding:0;
     }
+
+    .list-view{
+        width:100px;
+        height: 300px;
+        overflow-y: auto;
+    }
+
+    .list-item{
+        padding:12px 10px;
+    }
 </style>

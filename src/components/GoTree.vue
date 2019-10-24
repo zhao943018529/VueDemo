@@ -25,7 +25,7 @@ export default {
             allowCopy: false,
             allowDelete: false,
             allowMove: false,
-            initialAutoScale: go.Diagram.Uniform,
+            initialAutoScale: go.Diagram.UniformToFill,
             layout:
               $(this.layout,  // custom Layout, defined below
                 {
@@ -60,7 +60,7 @@ export default {
                 b.part.expandTree();
               }
               
-            } })),
+            } },new go.Binding('visible',"text",function(){return false}),)),
           $(go.Panel,  // this is underneath the "BODY"
             { height: 17 },  // always this height, even if the TreeExpanderButton is not visible
             $("TreeExpanderButton")

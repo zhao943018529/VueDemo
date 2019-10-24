@@ -17,6 +17,7 @@
       <Option key="ffff" value="ggggg" />
       <Option key="kkkk" value="jjjjj" />
     </TestJSX>
+    <ListView :size="30"/>
   </div>
 </template>
 
@@ -28,6 +29,7 @@ import ElSelect from "../controls/select.vue";
 import ElOption from "../controls/option.vue";
 import TestJSX from './TestJSX.jsx';
 import Option from './Option.jsx';
+import ListView from './ListView.jsx';
 
 export default {
   name: "mytodos",
@@ -61,6 +63,7 @@ export default {
     ElOption,
     TestJSX,
     Option,
+    ListView,
   },
   beforeMount() {
     console.log("i am iron");
@@ -70,4 +73,14 @@ export default {
 </script>
 
 <style lang="scss">
+
+    .list-view{
+        width:100px;
+        height: 300px;
+        overflow-y: auto;
+    }
+
+    .list-item{
+        padding:12px 10px;
+    }
 </style>
