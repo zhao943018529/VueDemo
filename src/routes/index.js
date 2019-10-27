@@ -3,6 +3,7 @@ import MyTodos from '../components/MyTodos.vue';
 import ESTree from '../components/ESTree.vue';
 import HChart from '../components/HChart.vue';
 import GoTree from '../components/GoTree.vue';
+import DTree from '../components/DTree.jsx';
 
 export default [{
     path: '/',
@@ -22,5 +23,8 @@ export default [{
     }, {
         path: '/gotree/index',
         component: GoTree,
+    },{
+        path:'/dtree/index',
+        component:DTree,
     }]
 }];
