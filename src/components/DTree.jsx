@@ -6,7 +6,7 @@ export default {
     name: 'd3-demo',
     data() {
         return {
-            width: 1200,
+            width: 2000,
             duration: 1000,
             layout: {
                 top: 20,
@@ -24,7 +24,7 @@ export default {
             const nodes = this.root.descendants().reverse();
             const links = this.root.links();
             this.tree(this.root);
-            let left = this.root;
+            let left = this.root; 
             let right = this.root;
             this.root.eachBefore(node => {
                 if (node.x < left.x) left = node;
@@ -37,18 +37,20 @@ export default {
 
             const node = this.gNode.selectAll('g.node').data(nodes, d => d.id);
             const nodeEnter = node.enter().append('g').attr('class', 'node')
-                .attr('transform', d => `translate(${source.y0 + d.depth * 68},${source.x0})`)
+                .attr('transform', d => `translate(${source.y0 + this.labelWidthMap[source.id] + (source.depth + 1) * 18},${source.x0})`)
                 .attr('fill-opacity', 0)
                 .attr('stroke-opacity', 0)
             // .on('click', d => {
             //     d.children = d.children ? null : d._children;
             //     this.update(d);
             // });
-            const g1Node = nodeEnter.append('g').attr('width', 50).attr('height', 16).attr('transform', `translate(0,-8)`);
+            const g1Node = nodeEnter.append('g').attr('width', d => {
+                return d.data.name.length * 12;
+            }).attr('height', 24).attr('transform', `translate(0,-12)`);
             g1Node.append('rect')
                 // .attr('x', -40)
                 // .attr('y', -8)
-                .attr('width', 50)
+                .attr('width', d => d.data.name.length * 12)
                 .attr('height', 24)
                 // .attr('fill', d => d._children ? '#555' : '#fff')
                 .attr('fill', d => d._children ? "#555" : "#999")
@@ -64,68 +66,95 @@ export default {
             const g2Node = nodeEnter.append('g').attr('width', 18).style('display', d => {
                 if (d.children || d._children) return "inline";
                 else return "none";
-            }).attr('height', 18).attr('transform', `translate(50,3)`);
-            g2Node.append('circle').attr('cx', 9).attr('r', 9).attr('fill', 'blue');
+            }).attr('height', 18).attr('transform', d => `translate(${d.data.name.length * 12},0)`);
+            g2Node.append('rect').attr('y', -9).attr('width', 18).attr('height', 18).attr('fill', 'blue');
             g2Node.append('text').attr('class', 'expandText').text(d => {
                 return d.children ? '-' : '+';
             })
                 // .attr('dy', '0.3em')
                 .attr('dominant-baseline', 'middle')
                 .attr('title', d => d.data.name)
-                .attr('dx', 9).attr('fill', '#fff').attr('text-anchor', 'middle').style('font-weight', 700).on('click', d => {
-                    if (d.children) {
-                        d._children = d.children;
-                        d.children = null;
-                    } else {
-                        d.children = d._children;
-                        d._children = null;
-                    }
-                    this.update(d);
-                });
+                .attr('dx', 9).attr('fill', '#fff').attr('text-anchor', 'middle').style('font-weight', 700)
+                .on('click', this.toggle);
+            // .on('click', d => {
+            //     if (d.children) {
+            //         d._children = d.children;
+            //         d.children = null;
+            //     } else {
+            //         d.children = d._children;
+            //         d._children = null;
+            //     }
+            //     this.update(d);
+            // });
             // .clone(true)
             // .lower().attr("stroke-linejoin", "round")
             // .attr("stroke-width", 3)
             // .attr("stroke", "white");
             const nodeUpdate = node.merge(nodeEnter)
-                .transition(transition).attr('transform', d => `translate(${d.y + d.depth * 68},${d.x})`)
+                .transition(transition).attr('transform', d => `translate(${d.y + (d.parent ? this.labelWidthMap[d.parent.id] : 0) + d.depth * 18},${d.x})`)
                 .attr('fill-opacity', '1').attr('stroke-opacity', 1);
             const nodeExit = node.exit().transition(transition)
-                .remove().attr('transform', d => `translate(${source.y + source.depth * 68},${source.x})`)
+                .remove().attr('transform', d => `translate(${source.y + this.labelWidthMap[source.id] + (source.depth + 1) * 18},${source.x})`)
                 .attr('fill-opacity', 0).attr('stroke-opacity', 0);
 
             node.select('text.expandText').text(d => d.children ? '-' : '+');
             const link = this.gLink.selectAll('path').data(links, d => d.target.id);
             const linkEnter = link.enter().append('path').attr('d', d => {
-                const o = { x: source.x0, y: source.y0 + (source.depth + 1) * 68 };
+                const o = { x: source.x0, y: source.y0 + this.labelWidthMap[source.id] + (source.depth + 1) * 18 };
                 return this.diagonal({ source: o, target: o });
             });
             link.merge(linkEnter).transition(transition).attr('d', d => {
                 const o = _.clone(d.source);
-                o.y += d.target.depth * 68;
-                const t = { x: d.target.x, y: d.target.y + d.target.depth * 68 };
+                o.y += this.labelWidthMap[d.source.id] + d.target.depth * 18;
+                const t = { x: d.target.x, y: d.target.y + this.labelWidthMap[d.source.id] + d.target.depth * 18 };
                 return this.diagonal({ source: o, target: t });
             });
             link.exit().transition(transition).remove().attr('d', d => {
-                const o = { x: source.x, y: source.y + (source.depth + 1) * 68 };
+                const o = { x: source.x, y: source.y + this.labelWidthMap[source.id] + (source.depth + 1) * 18 };
                 return this.diagonal({ source: o, target: o });
             });
             this.root.eachBefore(d => {
                 d.x0 = d.x;
                 d.y0 = d.y;
             });
+        },
+        dfsCollapse(children) {
+            _.each(children, item => {
+                if (item.children) {
+                    this.dfsCollapse(item.children);
+                    item._children = item.children;
+                    item.children = null;
+                }
+            })
+        },
+        toggle(d) {
+            if (d.children) {
+                this.dfsCollapse(d.children);
+                d._children = d.children;
+                d.children = null;
+            } else {
+                d.children = d._children;
+                d._children = null;
+            }
+            this.update(d);
         }
     },
     mounted() {
         this.root = d3.hierarchy(mock_data);
-        debugger;
+        this.labelWidthMap = {};
         this.dx = 28;
-        // this.dy = this.width / (this.root.height + 1);
-        this.dy = 66;
+        this.dy = this.width / (this.root.height + 1);
+        // this.dy = 66;
         this.root.x0 = this.dy / 2;
         this.root.y0 = 0;
         this.tree = d3.tree().nodeSize([this.dx, this.dy]);
         this.root.descendants().forEach((d, i) => {
             d.id = _.uniqueId('d3');
+            let width = d.data.name.length * 12;
+            if (d.parent) {
+                width += this.labelWidthMap[d.parent.id];
+            }
+            this.labelWidthMap[d.id] = width;
             d._children = d.children;
             d.children = null;
         });
