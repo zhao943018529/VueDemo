@@ -4,6 +4,7 @@ import ESTree from '../components/ESTree.vue';
 import HChart from '../components/HChart.vue';
 import GoTree from '../components/GoTree.vue';
 import DTree from '../components/DTree.jsx';
+import DTree_t from '../components/DTree_t.jsx';
 
 export default [{
     path: '/',
@@ -26,5 +27,8 @@ export default [{
     },{
         path:'/dtree/index',
         component:DTree,
+    },{
+        path:'/dtree_t/index',
+        component:DTree_t,
     }]
 }];

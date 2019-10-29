@@ -1,5 +1,6 @@
 export default {
   name: "flare",
+  isMain: true,
   children: [
     {
       name: "analytics",
@@ -238,6 +239,7 @@ export default {
     },
     {
       name: "vis",
+      isMain: true,
       children: [
         {
           name: "axis",
@@ -267,6 +269,7 @@ export default {
         },
         {
           name: "data",
+          isMain: true,
           children: [
             { name: "Data", value: 20544 },
             { name: "DataList", value: 19788 },
@@ -275,8 +278,9 @@ export default {
             { name: "NodeSprite", value: 19382 },
             {
               name: "render",
+              isMain: true,
               children: [
-                { name: "ArrowType", value: 698 },
+                { name: "ArrowType", isMain: true, value: 698 },
                 { name: "EdgeRenderer", value: 5569 },
                 { name: "IRenderer", value: 353 },
                 { name: "ShapeRenderer", value: 2247 }
