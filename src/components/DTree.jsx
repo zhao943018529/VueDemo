@@ -35,7 +35,7 @@ export default {
             return _.max(depthWidth);
         },
         update(source) {
-            const levelWidth = this.getMaxLevel() * 40;
+            const levelWidth = this.getMaxLevel() * 60;
             this.tree = this.tree.size([levelWidth, this.height]);
             this.tree(this.root);
             const nodes = this.root.descendants().reverse();
@@ -138,15 +138,37 @@ export default {
             // .attr("stroke-width", 3)
             // .attr("stroke", "white");
             nodeEnter.append('text').text(d => d.data.name).attr('transform', `translate(0,${28})`).attr('fill', '#333333');
-            // nodeEnter.append('line').attr('x1', 48).attr('x2', 148).attr('stroke', '#555').attr('storke-width', 1.5);
+            const broNodeEnter = nodeEnter.filter(function (d) { return _.some(d.children, child => child.data.isMain); });
+            const broNode = broNodeEnter.append('g').attr('class','broComponent').attr('transform', 'translate(130,0)');
+            broNode.append('line').attr('x1', 0).attr('x2', -82).attr('stroke', '#555').attr('stroke-width', 1.5).attr('stroke-opacity', 0.5);
+            broNode.append('use').attr('class', 'broButton').attr('width', 18).attr('height', 18).attr('href', d =>d.children.length<d._children.length?'#expandBro':'#collapseBro')
+            .attr('transform', 'translate(0,-9)')
+                .on('click', d => {
+                    if (d._children.length > d.children.length) {
+                        d.children = d._children;
+                    } else {
+                        const found = _.findIndex(d.children, item => item.data.isMain);
+                        this.dfsCollapse(_.filter(d.children, (item, index) => index !== found));
+                        d.children = [d.children[found]];
+                    }
+                    this.update(d);
+                });
             const nodeUpdate = node.merge(nodeEnter)
-                .transition().attr('transform', d => `translate(${d.y + (d.parent ? this.lineMap[d.parent.id] : 0) * 100 + d.depth * 48},${d.x})`)
+                .transition().attr('transform', d => `translate(${d.y + (this.lineMap[d.id] - (d.data.isMain ? 1 : 0)) * 100 + d.depth * 48},${d.x})`)
                 .attr('fill-opacity', '1').attr('stroke-opacity', 1);
             const nodeExit = node.exit().transition()
                 .remove().attr('transform', d => `translate(${source.y + this.lineMap[source.id] * 100 + (source.depth + 1) * 48},${source.x})`)
                 .attr('fill-opacity', 0).attr('stroke-opacity', 0);
 
             node.select('use.expandChildren').attr('href', d => `#${d.children ? 'substract' : 'plus'}`);
+            node.select('g.broComponent').filter(d=>!d.children).remove();
+            node.select('use.broButton').attr('href', d => {
+                if (d.children.length < d._children.length) {
+                    return '#expandBro';
+                } else {
+                    return '#collapseBro';
+                }
+            });
             const link = this.gLink.selectAll('path').data(links, d => d.target.id);
             const linkEnter = link.enter().append('path').attr('d', d => {
                 const o = { x: source.x0, y: source.y0 + this.lineMap[source.id] * 100 + (source.depth + 1) * 48 };
@@ -155,7 +177,7 @@ export default {
             link.merge(linkEnter).transition().attr('d', d => {
                 const o = _.clone(d.source);
                 o.y += this.lineMap[d.source.id] * 100 + d.target.depth * 48;
-                const t = { x: d.target.x, y: d.target.y + this.lineMap[d.target.id] * 100 + d.target.depth * 48 };
+                const t = { x: d.target.x, y: d.target.y + this.lineMap[d.source.id] * 100 + d.target.depth * 48 };
                 return this.diagonal({ source: o, target: t });
             });
             link.exit().transition().remove().attr('d', d => {
@@ -252,6 +274,12 @@ export default {
                     </symbol>
                     <symbol id="Combined-Shape" viewBox="0 0 30 30">
                         <path d="M2,2 L28,2 L28,28 L2,28 L2,2 Z M4,8 L4,26 L26,26 L26,8 L4,8 Z M24,4 L24,6 L26,6 L26,4 L24,4 Z M21,4 L21,6 L23,6 L23,4 L21,4 Z M18,4 L18,6 L20,6 L20,4 L18,4 Z M4,4 L4,6 L16,6 L16,4 L4,4 Z M8.82842712,17.5 L10.9497475,19.6213203 L9.53553391,21.0355339 L6,17.5 L9.53553391,13.9644661 L10.9497475,15.3786797 L8.82842712,17.5 Z M17.3111114,11.9287133 L19,13 L12.6568542,23 L10.8124099,21.4643567 L17.3111114,11.9287133 Z M21.1715729,17.5 L19.0502525,15.3786797 L20.4644661,13.9644661 L24,17.5 L20.4644661,21.0355339 L19.0502525,19.6213203 L21.1715729,17.5 Z"></path>
+                    </symbol>
+                    <symbol id="expandBro" viewBox="0 0 448 512">
+                        <path d="M448 344v112a23.94 23.94 0 0 1-24 24H312c-21.39 0-32.09-25.9-17-41l36.2-36.2L224 295.6 116.77 402.9 153 439c15.09 15.1 4.39 41-17 41H24a23.94 23.94 0 0 1-24-24V344c0-21.4 25.89-32.1 41-17l36.19 36.2L184.46 256 77.18 148.7 41 185c-15.1 15.1-41 4.4-41-17V56a23.94 23.94 0 0 1 24-24h112c21.39 0 32.09 25.9 17 41l-36.2 36.2L224 216.4l107.23-107.3L295 73c-15.09-15.1-4.39-41 17-41h112a23.94 23.94 0 0 1 24 24v112c0 21.4-25.89 32.1-41 17l-36.19-36.2L263.54 256l107.28 107.3L407 327.1c15.1-15.2 41-4.5 41 16.9z"></path>
+                    </symbol>
+                    <symbol id="collapseBro" viewBox="0 0 448 512">
+                        <path d="M200 288H88c-21.4 0-32.1 25.8-17 41l32.9 31-99.2 99.3c-6.2 6.2-6.2 16.4 0 22.6l25.4 25.4c6.2 6.2 16.4 6.2 22.6 0L152 408l31.1 33c15.1 15.1 40.9 4.4 40.9-17V312c0-13.3-10.7-24-24-24zm112-64h112c21.4 0 32.1-25.9 17-41l-33-31 99.3-99.3c6.2-6.2 6.2-16.4 0-22.6L481.9 4.7c-6.2-6.2-16.4-6.2-22.6 0L360 104l-31.1-33C313.8 55.9 288 66.6 288 88v112c0 13.3 10.7 24 24 24zm96 136l33-31.1c15.1-15.1 4.4-40.9-17-40.9H312c-13.3 0-24 10.7-24 24v112c0 21.4 25.9 32.1 41 17l31-32.9 99.3 99.3c6.2 6.2 16.4 6.2 22.6 0l25.4-25.4c6.2-6.2 6.2-16.4 0-22.6L408 360zM183 71.1L152 104 52.7 4.7c-6.2-6.2-16.4-6.2-22.6 0L4.7 30.1c-6.2 6.2-6.2 16.4 0 22.6L104 152l-33 31.1C55.9 198.2 66.6 224 88 224h112c13.3 0 24-10.7 24-24V88c0-21.3-25.9-32-41-16.9z"></path>
                     </symbol>
                 </defs>
             </svg >
