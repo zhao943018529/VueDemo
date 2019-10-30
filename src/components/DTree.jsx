@@ -57,59 +57,63 @@ export default {
 
             const node = this.gNode.selectAll('g.node').data(nodes, d => d.id);
             const nodeEnter = node.enter().append('g').attr('class', 'node')
-                .attr('transform', d => `translate(${source.y0 + this.labelWidthMap[source.id] + (source.depth + 1) * 18},${source.x0})`)
+                .attr('transform', d => `translate(${source.y0 + (this.lineMap[source.id] - (d.data.isMain ? 1 : 0)) * 100 + (source.depth + 1) * 48},${source.x0})`)
                 .attr('fill-opacity', 0)
                 .attr('stroke-opacity', 0)
             // .on('click', d => {
             //     d.children = d.children ? null : d._children;
             //     this.update(d);
             // });
-            const g1Node = nodeEnter.append('g')
-                // .attr('width', d => {
-                //     return d.data.name.length * 12;
-                // })
-                // .attr('height', 24)
-                .attr('transform', `translate(0,)`);
-            g1Node.append('text').text(d => d.parent && d.parent._children.length - 1).style('display', d => {
-                if (d.data.isMain && (d.parent && d.parent._children.length > 1)) {
-                    return "inline";
-                } else {
-                    return "none";
-                }
-            }).on('click', d => {
-                if (d.parent._children.length > d.parent.children.length) {
-                    d.parent.children = d.parent._children;
-                } else {
-                    this.dfsCollapse(_.filter(d.parent.children, item => item.id !== d.id));
-                    d.parent.children = [d];
-                }
-                this.update(d.parent);
-            });
-            g1Node.append('rect')
-                // .attr('x', -40)
-                // .attr('y', -8)
-                .attr('width', d => d.data.name.length * 12)
-                .attr('height', 24)
-                // .attr('fill', d => d._children ? '#555' : '#fff')
-                .attr('fill', d => d._children ? "#555" : "#999")
+            const g1Node = nodeEnter.append('g').attr('transform', 'translate(0,-13)');
+            g1Node.append('use').attr('href', '#Combined-Shape')
+                .attr('fill', '#29C11B')
+                .attr('width', 26).attr('height', 26)
+            // .attr('width', d => {
+            //     return d.data.name.length * 12;
+            // })
+            // .attr('height', 24)
+            // .attr('transform', `translate(0,-12)`);
+            // g1Node.append('text').text(d => d.parent && d.parent._children.length - 1).style('display', d => {
+            //     if (d.data.isMain && (d.parent && d.parent._children.length > 1)) {
+            //         return "inline";
+            //     } else {
+            //         return "none";
+            //     }
+            // }).on('click', d => {
+            //     if (d.parent._children.length > d.parent.children.length) {
+            //         d.parent.children = d.parent._children;
+            //     } else {
+            //         this.dfsCollapse(_.filter(d.parent.children, item => item.id !== d.id));
+            //         d.parent.children = [d];
+            //     }
+            //     this.update(d.parent);
+            // });
+            // g1Node.append('rect')
+            //     // .attr('x', -40)
+            //     // .attr('y', -8)
+            //     .attr('width', d => d.data.name.length * 12)
+            //     .attr('height', 24)
+            //     // .attr('fill', d => d._children ? '#555' : '#fff')
+            //     .attr('fill', d => d._children ? "#555" : "#999")
 
-                .attr('stroke-width', 1.5);
+            //     .attr('stroke-width', 1.5);
             // g1Node.append('path').attr('d','M528 224H272c-8.8 0-16 7.2-16 16v144H64V144c0-8.8-7.2-16-16-16H16c-8.8 0-16 7.2-16 16v352c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-48h512v48c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V336c0-61.9-50.1-112-112-112zM136 96h126.1l27.6 55.2c5.9 11.8 22.7 11.8 28.6 0L368 51.8 390.1 96H512c8.8 0 16-7.2 16-16s-7.2-16-16-16H409.9L382.3 8.8C376.4-3 359.6-3 353.7 8.8L304 108.2l-19.9-39.8c-1.4-2.7-4.1-4.4-7.2-4.4H136c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8zm24 256c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64z')
-            g1Node.append('text')
-                .attr('dy', '1em')
-                .attr('dx', '.2em')
-                // .attr('x', 0)
-                .attr('text-anchor', 'start')
-                .attr("stroke", "#fff")
-                .text(d => d.data.name);
-            const g2Node = nodeEnter.append('use').attr('width', 18).style('display', d => {
+            // g1Node.append('text')
+            //     .attr('dy', '1em')
+            //     .attr('dx', '.2em')
+            //     // .attr('x', 0)
+            //     .attr('text-anchor', 'start')
+            //     .attr("stroke", "#fff")
+            //     .text(d => d.data.name);
+            // g1Node.append('')
+            g1Node.append('use').attr('class', 'expandChildren').style('display', d => {
                 if (d.children || d._children) return "inline";
                 else return "none";
-            }).attr('height', 18).attr('fill','#d1ecf1').attr('stroke','#0c5460')
-            .attr('transform', d => `translate(${d.data.name.length * 12},0)`)
-            .attr('href', d => {
-                return `#${d.children ? 'substract' : 'plus'}`;
-            }).on('click', this.toggle);
+            }).attr('height', 18).attr('width', 18).attr('stroke', '#333333')
+                .attr('transform', d => `translate(30,4)`)
+                .attr('href', d => {
+                    return `#${d.children ? 'substract' : 'plus'}`;
+                }).on('click', this.toggle);
             // g2Node.append('rect').attr('y', -9).attr('width', 18).attr('height', 18).attr('fill', 'blue');
             // g2Node.append('text').attr('class', 'expandText').text(d => {
             //     return d.children ? '-' : '+';
@@ -133,27 +137,29 @@ export default {
             // .lower().attr("stroke-linejoin", "round")
             // .attr("stroke-width", 3)
             // .attr("stroke", "white");
+            nodeEnter.append('text').text(d => d.data.name).attr('transform', `translate(0,${28})`).attr('fill', '#333333');
+            // nodeEnter.append('line').attr('x1', 48).attr('x2', 148).attr('stroke', '#555').attr('storke-width', 1.5);
             const nodeUpdate = node.merge(nodeEnter)
-                .transition().attr('transform', d => `translate(${d.y + (d.parent ? this.labelWidthMap[d.parent.id] : 0) + d.depth * 18},${d.x})`)
+                .transition().attr('transform', d => `translate(${d.y + (d.parent ? this.lineMap[d.parent.id] : 0) * 100 + d.depth * 48},${d.x})`)
                 .attr('fill-opacity', '1').attr('stroke-opacity', 1);
             const nodeExit = node.exit().transition()
-                .remove().attr('transform', d => `translate(${source.y + this.labelWidthMap[source.id] + (source.depth + 1) * 18},${source.x})`)
+                .remove().attr('transform', d => `translate(${source.y + this.lineMap[source.id] * 100 + (source.depth + 1) * 48},${source.x})`)
                 .attr('fill-opacity', 0).attr('stroke-opacity', 0);
 
-            node.select('text.expandText').text(d => d.children ? '-' : '+');
+            node.select('use.expandChildren').attr('href', d => `#${d.children ? 'substract' : 'plus'}`);
             const link = this.gLink.selectAll('path').data(links, d => d.target.id);
             const linkEnter = link.enter().append('path').attr('d', d => {
-                const o = { x: source.x0, y: source.y0 + this.labelWidthMap[source.id] + (source.depth + 1) * 18 };
+                const o = { x: source.x0, y: source.y0 + this.lineMap[source.id] * 100 + (source.depth + 1) * 48 };
                 return this.diagonal({ source: o, target: o });
             });
             link.merge(linkEnter).transition().attr('d', d => {
                 const o = _.clone(d.source);
-                o.y += this.labelWidthMap[d.source.id] + d.target.depth * 18;
-                const t = { x: d.target.x, y: d.target.y + this.labelWidthMap[d.source.id] + d.target.depth * 18 };
+                o.y += this.lineMap[d.source.id] * 100 + d.target.depth * 48;
+                const t = { x: d.target.x, y: d.target.y + this.lineMap[d.target.id] * 100 + d.target.depth * 48 };
                 return this.diagonal({ source: o, target: t });
             });
             link.exit().transition().remove().attr('d', d => {
-                const o = { x: source.x, y: source.y + this.labelWidthMap[source.id] + (source.depth + 1) * 18 };
+                const o = { x: source.x, y: source.y + this.lineMap[source.id] * 100 + (source.depth + 1) * 48 };
                 return this.diagonal({ source: o, target: o });
             });
             this.root.eachBefore(d => {
@@ -191,6 +197,7 @@ export default {
     mounted() {
         this.root = d3.hierarchy(mock_data);
         this.labelWidthMap = {};
+        this.lineMap = {};
         // this.dx = 24;
         // this.dy = this.width / (this.root.height + 1);
         this.root.x0 = this.width / 2;
@@ -198,9 +205,12 @@ export default {
         this.root.descendants().forEach((d, i) => {
             d.id = _.uniqueId('d3');
             let width = d.data.name.length * 12;
+            let lineNum = d.data.isMain ? 1 : 0;
             if (d.parent) {
+                lineNum += this.lineMap[d.parent.id];
                 width += this.labelWidthMap[d.parent.id];
             }
+            this.lineMap[d.id] = lineNum;
             this.labelWidthMap[d.id] = width;
             const mainNode = _.find(d.children, item => item.data.isMain);
             d._children = d.children;
@@ -232,15 +242,17 @@ export default {
         return (
             <svg width={this.width} height={this.height}>
                 <defs>
-                    <g id='plus' viewBox="0 0 20 20">
-                        <rect x="0" y="0" width="20" height="20" stroke-width="0"></rect>
-                        <line x1="2" y1="10" x2="18" y2="10" stroke-width="4"></line>
-                        <line x1="10" y1="2" x2="10" y2="18" stroke-width="4"></line>
-                    </g>
-                    <g id='substract' viewBox="0 0 20 20">
-                        <rect x="0" y="0" width="20" height="20" stroke-width="0"></rect>
-                        <line x1="2" y1="10" x2="18" y2="10" stroke-width="4"></line>
-                    </g>
+                    <symbol id='plus' viewBox="0 0 14 14">
+                        <circle fill="none" stroke="1" cx="7" cy="7" r="6.5"></circle>
+                        <path d="M7.5,7.5 L7.5,11 L6.5,11 L6.5,7.5 L3,7.5 L3,6.5 L6.5,6.5 L6.5,3 L7.5,3 L7.5,6.5 L11,6.5 L11,7.5 L7.5,7.5 Z"></path>
+                    </symbol>
+                    <symbol id='substract' viewBox="0 0 14 14">
+                        <circle fill="none" stroke="1" cx="7" cy="7" r="6.5"></circle>
+                        <polygon points="11 6.5 11 7.5 3 7.5 3 6.5"></polygon>
+                    </symbol>
+                    <symbol id="Combined-Shape" viewBox="0 0 30 30">
+                        <path d="M2,2 L28,2 L28,28 L2,28 L2,2 Z M4,8 L4,26 L26,26 L26,8 L4,8 Z M24,4 L24,6 L26,6 L26,4 L24,4 Z M21,4 L21,6 L23,6 L23,4 L21,4 Z M18,4 L18,6 L20,6 L20,4 L18,4 Z M4,4 L4,6 L16,6 L16,4 L4,4 Z M8.82842712,17.5 L10.9497475,19.6213203 L9.53553391,21.0355339 L6,17.5 L9.53553391,13.9644661 L10.9497475,15.3786797 L8.82842712,17.5 Z M17.3111114,11.9287133 L19,13 L12.6568542,23 L10.8124099,21.4643567 L17.3111114,11.9287133 Z M21.1715729,17.5 L19.0502525,15.3786797 L20.4644661,13.9644661 L24,17.5 L20.4644661,21.0355339 L19.0502525,19.6213203 L21.1715729,17.5 Z"></path>
+                    </symbol>
                 </defs>
             </svg >
         );
