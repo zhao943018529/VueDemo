@@ -6,8 +6,12 @@ export default function createStore() {
     return new Vuex.Store({
         state: {
             todos: [],
+            count: 1,
         },
         mutations: {
+            increment(state) {
+                ++state.count;
+            },
             addTodo(state, payload) {
                 state.todos.push({ id: _.uniqueId('todo_'), name: payload.name, completed: false, });
             },

@@ -42,7 +42,6 @@ export default {
         },
     },
     render() {
-        debugger;
         const propsData={props:{a:'111111',b:11111,c:true},attrs:{}};
 
         return (<div>{this.renderOptions()}

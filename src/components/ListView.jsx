@@ -51,7 +51,6 @@ export default {
             return (<li class='list-item' key={item.id}>{item.description}</li>);
         },
         renderBody() {
-            debugger;
             return (
                 <ul class="list-content" ref="content">
                     {_.map(_.times(this.current, i => this.list[i]), (item, index) => this.renderItem(item, index))}

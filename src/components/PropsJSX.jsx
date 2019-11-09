@@ -11,7 +11,6 @@ export default {
         c:Boolean,
     },
     render() {
-        debugger;
         return (<div>{this.a}</div>);
     },
 };

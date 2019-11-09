@@ -3,6 +3,7 @@
     <AddTodo />
     <TodoList v-bind:type="$route.params.type" />
     <TodoFooter />
+    <Increment />
     <div style="width:40%" v-if="$route.params.type=='all'">
       <el-select>
         <el-option v-for="option in options" v-bind:key="option.id" v-bind="option">
@@ -30,6 +31,7 @@ import ElOption from "../controls/option.vue";
 import TestJSX from './TestJSX.jsx';
 import Option from './Option.jsx';
 import ListView from './ListView.jsx';
+import Increment from './Increment.jsx';
 
 export default {
   name: "mytodos",
@@ -64,6 +66,7 @@ export default {
     TestJSX,
     Option,
     ListView,
+    Increment
   },
   beforeMount() {
     console.log("i am iron");
