@@ -3,8 +3,13 @@
     <AddTodo />
     <TodoList v-bind:type="$route.params.type" />
     <TodoFooter />
-    <Increment />
-    <div style="width:40%" v-if="$route.params.type=='all'">
+    <Increment :randomSay="randomSay" >
+      <template #instagram>
+        <div>aaaa</div>
+      </template>
+    </Increment>
+    <button @click="getSayWord">Say</button>
+    <!-- <div style="width:40%" v-if="$route.params.type=='all'">
       <el-select>
         <el-option v-for="option in options" v-bind:key="option.id" v-bind="option">
           <span>{{option.label+":"+option.value}}</span>
@@ -18,7 +23,7 @@
       <Option key="ffff" value="ggggg" />
       <Option key="kkkk" value="jjjjj" />
     </TestJSX>
-    <ListView :size="30"/>
+    <ListView :size="30" /> -->
   </div>
 </template>
 
@@ -28,15 +33,16 @@ import TodoList from "./TodoList_r.vue";
 import TodoFooter from "./TodoFooter.vue";
 import ElSelect from "../controls/select.vue";
 import ElOption from "../controls/option.vue";
-import TestJSX from './TestJSX.jsx';
-import Option from './Option.jsx';
-import ListView from './ListView.jsx';
-import Increment from './Increment.jsx';
+import TestJSX from "./TestJSX.jsx";
+import Option from "./Option.jsx";
+import ListView from "./ListView.jsx";
+import Increment from "./Increment.jsx";
 
 export default {
   name: "mytodos",
   data() {
     return {
+      randomSay: "a",
       options: [
         { id: 1, label: "afafd", value: 111 },
         { id: 2, label: "gggg", value: 222 },
@@ -71,19 +77,25 @@ export default {
   beforeMount() {
     console.log("i am iron");
     console.log(this.$route.params);
+  },
+  methods: {
+    getSayWord() {
+      this.randomSay = String.fromCodePoint(
+        97 + Math.floor(Math.random() * 26)
+      );
+    }
   }
 };
 </script>
 
 <style lang="scss">
+.list-view {
+  width: 100px;
+  height: 300px;
+  overflow-y: auto;
+}
 
-    .list-view{
-        width:100px;
-        height: 300px;
-        overflow-y: auto;
-    }
-
-    .list-item{
-        padding:12px 10px;
-    }
+.list-item {
+  padding: 12px 10px;
+}
 </style>

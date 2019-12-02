@@ -1,4 +1,7 @@
-import * as d3 from "d3";
+// import * as d3 from "d3";
+import { zoomIdentity, zoomTransform, zoom } from 'd3-zoom';
+import { select, selectAll, event } from 'd3-selection';
+import { hierarchy, tree } from 'd3-hierarchy';
 import _ from 'lodash';
 import mock_data from './mock';
 
@@ -130,8 +133,14 @@ export default {
                     if (hasMain) {
                         const offsetX = 80 + 48;
 
-                        return `M${o.y + (d.target.data.isMain ? 48 : offsetX)} ${o.x},
-                        L${o.y + offsetX} ${o.x},
+                        // return `M${o.y + (d.target.data.isMain ? 48 : offsetX)} ${o.x},
+                        // L${o.y + offsetX} ${o.x},
+                        // C${o.y + offsetX + (this.root.dy - offsetX) / 2} ${o.x},
+                        // ${o.y + offsetX + (this.root.dy - offsetX) / 2} ${t.x},
+                        // ${t.y} ${t.x}`;
+                        return `M${o.y + 48} ${o.x},
+                        L${o.y + offsetX - 14} ${o.x},
+                        M${o.y + offsetX} ${o.x},
                         C${o.y + offsetX + (this.root.dy - offsetX) / 2} ${o.x},
                         ${o.y + offsetX + (this.root.dy - offsetX) / 2} ${t.x},
                         ${t.y} ${t.x}`;
@@ -183,25 +192,25 @@ export default {
             this.viewChange(d);
         },
         zoom() {
-            const transform = d3.event.transform;
+            const transform = event.transform;
             this.svgContainer.attr("transform", `translate(${transform.x},${transform.y})scale(${transform.k})`);
         },
         center(source) {
-            const k = d3.zoomTransform(this.baseSvg).k;
+            const k = zoomTransform(this.baseSvg).k;
             const translateX = -source.y0 * k + this.width / 2;
             const translateY = -source.x0 * k + this.height / 2;
             this.baseSvg.transition().duration(this.duration)
-                .call(this.zoomListener.transform, d3.zoomIdentity.translate(translateX,translateY).scale(k))
-                // .call(this.zoomListener.translateTo, translateX, translateY, [this.width, this.height]);
+                .call(this.zoomListener.transform, zoomIdentity.translate(translateX, translateY).scale(k))
+            // .call(this.zoomListener.translateTo, translateX, translateY, [this.width, this.height]);
         },
         viewChange(source, isBrother) {
             this.update(source, isBrother);
 
-            this.center(source,isBrother);
+            this.center(source, isBrother);
         }
     },
     mounted() {
-        this.root = d3.hierarchy(mock_data);
+        this.root = hierarchy(mock_data);
         this.labelWidthMap = {};
         this.lineMap = {};
         this.root.dx = 46;
@@ -220,26 +229,26 @@ export default {
             }
         });
         // this.tree = d3.tree().size([this.height, this.width]);
-        this.tree = d3.tree().nodeSize([this.root.dx, this.root.dy]);
-        this.baseSvg = d3.select(this.$el)
+        this.tree = tree().nodeSize([this.root.dx, this.root.dy]);
+        this.baseSvg = select(this.$el)
             .style("font", "18px sans-serif")
             .style('user-select', 'none');
         this.svgContainer = this.baseSvg.append('g');
         // this.svg = this.svgContainer
         // .attr('viewBox', [-this.layout.left, -this.layout.top, this.width, this.dx])
 
-        this.zoomListener = d3.zoom().scaleExtent([0.1, 3]).on("zoom", this.zoom);
+        this.zoomListener = zoom().scaleExtent([0.1, 3]).on("zoom", this.zoom);
         this.baseSvg.call(this.zoomListener);
         this.gNode = this.svgContainer.append('g').attr('cursor', 'pointer').attr('pointer-events', 'all');
         this.gLink = this.svgContainer.append('g').attr("fill", "none")
-            .attr("stroke", "#555")
+            .attr("stroke", "#C6C6C6")
             .attr("stroke-opacity", 0.4)
             .attr("stroke-width", 1.5);
         // this.diagonal = d3.linkHorizontal().x((d, i) => d.y).y(d => d.x);
-        this.diagonal = d3.line().x((d, i) => d.y).y(d => d.x);
+        // this.diagonal = d3.line().x((d, i) => d.y).y(d => d.x);
         this.viewChange(this.root);
     },
-    render(h) {
+    render() {
         return (
             <svg width={this.width} height={this.height}>
                 <defs>
