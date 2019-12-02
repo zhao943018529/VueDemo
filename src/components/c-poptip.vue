@@ -268,7 +268,6 @@ export default {
       // });
 
       this.__patch__(this.getMountNode(), vnode);
-      debugger;
       this.popover = vnode.componentInstance;
       // vnode.componentInstance = this.popover;
       // this.popover.$mount(this.getMountNode());
