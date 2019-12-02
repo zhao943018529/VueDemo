@@ -26,6 +26,18 @@
       <Option key="kkkk" value="jjjjj" />
     </TestJSX>
     <ListView :size="30"/> -->
+    <div>
+      <Poptip>
+        <button>I'm Iron</button>
+        <template #content>
+          <div
+            :style="{ width: '400px', height: '300px', background: 'green' }"
+          >
+            I'm not robot!!!
+          </div>
+        </template>
+      </Poptip>
+    </div>
   </div>
 </template>
 
@@ -35,12 +47,12 @@ import TodoList from "./TodoList_r.vue";
 import TodoFooter from "./TodoFooter.vue";
 import ElSelect from "../controls/select.vue";
 import ElOption from "../controls/option.vue";
-import TestJSX from './TestJSX.jsx';
-import Option from './Option.jsx';
-import ListView from './ListView.jsx';
-import Increment from './Increment.jsx';
-import Wrapper from './Wrapper.vue';
-import Poptip from './Poptip.jsx';
+import TestJSX from "./TestJSX.jsx";
+import Option from "./Option.jsx";
+import ListView from "./ListView.jsx";
+import Increment from "./Increment.jsx";
+import Wrapper from "./Wrapper.vue";
+import Poptip from "./c-poptip.vue";
 
 export default {
   name: "mytodos",
@@ -78,7 +90,7 @@ export default {
     ListView,
     Increment,
     Wrapper,
-    Poptip,
+    Poptip
   },
   beforeMount() {
     console.log("i am iron");

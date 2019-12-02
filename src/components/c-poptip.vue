@@ -19,22 +19,21 @@
 //     </div>
 //   </div>
 // </template>
-import _ from 'lodash';
-import { combineClassNames } from '@/utils/html';
-import CPopover from './c-popover';
-import { cloneVNode } from './util';
+import _ from "lodash";
+import CPopover from "./c-popover.vue";
+import { cloneVNode, combineClassNames } from "./util.js";
 
 export default {
-  name: 'poptip',
+  name: "poptip",
   components: {
-    CPopover,
+    CPopover
   },
   data() {
     return {
-      arrowClass: 'c-popper-arrow',
+      arrowClass: "c-popper-arrow",
       offset: 8,
       value: this.visible,
-      gap: 20,
+      gap: 20
     };
   },
   props: {
@@ -43,7 +42,7 @@ export default {
     activeClass: String,
     contentClass: String,
     getContainer: Function,
-    closable: Boolean,
+    closable: Boolean
   },
   methods: {
     adjustPosition() {
@@ -52,81 +51,102 @@ export default {
       const alignElement = this.$refs.alignElement;
       const popElement = this.$refs.popElement;
       const alignRect = alignElement.getBoundingClientRect();
-      popElement.style.willChange = 'top,left';
-      popElement.style.display = 'block';
+      popElement.style.willChange = "top,left";
+      popElement.style.display = "block";
       const popRect = popElement.getBoundingClientRect();
       const delta = {
         left: alignRect.left - winRect.left - this.gap,
         right: winRect.left + winRect.width - alignRect.right - this.gap,
         top: alignRect.top - winRect.top - this.gap,
-        bottom: winRect.top + winRect.height - alignRect.bottom - this.gap,
+        bottom: winRect.top + winRect.height - alignRect.bottom - this.gap
       };
       const layout = {
         vertical: Math.min(delta.top, delta.bottom),
-        horizontal: Math.min(delta.left, delta.right),
+        horizontal: Math.min(delta.left, delta.right)
       };
       let placement;
-      if (delta.left > popRect.width + this.offset && layout.vertical > layout.horizontal) {
-        placement = 'left';
-      } else if (delta.right > popRect.width + this.offset && layout.vertical > layout.horizontal) {
-        placement = 'right';
-      } else if (delta.top > popRect.height + this.offset && layout.horizontal > layout.vertical) {
-        placement = 'top';
+      if (
+        delta.left > popRect.width + this.offset &&
+        layout.vertical > layout.horizontal
+      ) {
+        placement = "left";
+      } else if (
+        delta.right > popRect.width + this.offset &&
+        layout.vertical > layout.horizontal
+      ) {
+        placement = "right";
+      } else if (
+        delta.top > popRect.height + this.offset &&
+        layout.horizontal > layout.vertical
+      ) {
+        placement = "top";
       } else if (
         delta.bottom > popRect.height + this.offset &&
         layout.horizontal > layout.vertical
       ) {
-        placement = 'bottom';
+        placement = "bottom";
       } else if (delta.left > popRect.width + this.offset) {
-        placement = 'left';
+        placement = "left";
       } else if (delta.right > popRect.width + this.offset) {
-        placement = 'right';
+        placement = "right";
       } else if (delta.top > popRect.height + this.offset) {
-        placement = 'top';
+        placement = "top";
       } else {
-        placement = 'bottom';
+        placement = "bottom";
       }
       let left;
       let top;
       const halfVertical = (popRect.height - alignRect.height) * 0.5;
       const halfHorizontal = (popRect.width - alignRect.width) * 0.5;
       switch (placement) {
-        case 'left':
+        case "left":
           left = -popRect.width - this.offset;
           if (delta.top < halfVertical) {
             top = -delta.top;
           } else if (delta.bottom < halfVertical) {
-            top = -Math.min(halfVertical - delta.bottom + halfVertical, delta.top);
+            top = -Math.min(
+              halfVertical - delta.bottom + halfVertical,
+              delta.top
+            );
           } else {
             top = -halfVertical;
           }
           break;
-        case 'right':
+        case "right":
           left = alignRect.width + this.offset;
           if (delta.top < halfVertical) {
             top = -delta.top;
           } else if (delta.bottom < halfVertical) {
-            top = -Math.min(halfVertical - delta.bottom + halfVertical, delta.top);
+            top = -Math.min(
+              halfVertical - delta.bottom + halfVertical,
+              delta.top
+            );
           } else {
             top = -halfVertical;
           }
           break;
-        case 'top':
+        case "top":
           top = -(this.offset + popRect.height);
           if (delta.left < halfHorizontal) {
             left = -delta.left;
           } else if (delta.right < halfHorizontal) {
-            left = -Math.min(halfHorizontal - delta.right + halfHorizontal, delta.left);
+            left = -Math.min(
+              halfHorizontal - delta.right + halfHorizontal,
+              delta.left
+            );
           } else {
             left = -halfHorizontal;
           }
           break;
-        case 'bottom':
+        case "bottom":
           top = alignRect.height + this.offset;
           if (delta.left < halfHorizontal) {
             left = -delta.left;
           } else if (delta.right < halfHorizontal) {
-            left = -Math.min(halfHorizontal - delta.right + halfHorizontal, delta.left);
+            left = -Math.min(
+              halfHorizontal - delta.right + halfHorizontal,
+              delta.left
+            );
           } else {
             left = -halfHorizontal;
           }
@@ -134,23 +154,27 @@ export default {
         default:
           break;
       }
-      popElement.style.left = left + 'px';
-      popElement.style.top = top + 'px';
+      popElement.style.left = left + "px";
+      popElement.style.top = top + "px";
       let arrowLeft;
       let arrowTop;
 
       switch (placement) {
-        case 'left':
-        case 'right':
+        case "left":
+        case "right":
           arrowTop =
-            (Math.min(alignRect.height, top + popRect.height) - Math.max(top, 0) - this.offset) *
+            (Math.min(alignRect.height, top + popRect.height) -
+              Math.max(top, 0) -
+              this.offset) *
               0.5 -
             Math.min(top, 0);
           break;
-        case 'top':
-        case 'bottom':
+        case "top":
+        case "bottom":
           arrowLeft =
-            (Math.min(left + popRect.width, alignRect.width) - Math.max(0, left) - this.offset) *
+            (Math.min(left + popRect.width, alignRect.width) -
+              Math.max(0, left) -
+              this.offset) *
               0.5 -
             Math.min(left, 0);
           break;
@@ -159,28 +183,28 @@ export default {
       }
 
       switch (placement) {
-        case 'left':
+        case "left":
           arrowLeft = popRect.width;
           break;
-        case 'right':
+        case "right":
           arrowLeft = -7;
           break;
-        case 'top':
+        case "top":
           arrowTop = popRect.height;
           break;
-        case 'bottom':
+        case "bottom":
           arrowTop = -7;
           break;
         default:
           break;
       }
       const arrow = this.$refs.arrow;
-      arrow.style.left = arrowLeft + 'px';
-      arrow.style.top = arrowTop + 'px';
+      arrow.style.left = arrowLeft + "px";
+      arrow.style.top = arrowTop + "px";
       arrow.className = `${this.arrowClass} ${placement}`;
     },
     closeOnMask(evt) {
-      if (!this.closable && !this.$refs['popElement'].contains(evt.target)) {
+      if (!this.closable && !this.$refs["popElement"].contains(evt.target)) {
         this.value = false;
       }
     },
@@ -197,27 +221,30 @@ export default {
     },
     initializeObserve() {
       this.observer = new ResizeObserver(this.observeCallback);
-      this.observer.observe(this.$refs['popElement']);
+      this.observer.observe(this.$refs["popElement"]);
       this.observer.observe(this.getContainer());
     },
     createReference(h) {
       return h(
-        'div',
+        "div",
         {
-          key: 'poptipReference',
-          ref: 'alignElement',
-          class: combineClassNames('c-popper-reference', this.value ? this.activeClass : ''),
-          on: { click: this.toggle },
+          key: "poptipReference",
+          ref: "alignElement",
+          class: combineClassNames(
+            "c-popper-reference",
+            this.value ? this.activeClass : ""
+          ),
+          on: { click: this.toggle }
         },
         this.$slots.default
       );
     },
     createMask(h) {
       if (this.value) {
-        return h('div', {
-          class: 'c-popper-mask',
-          ref: 'maskRef',
-          on: { click: this.closeOnMask },
+        return h("div", {
+          class: "c-popper-mask",
+          ref: "maskRef",
+          on: { click: this.closeOnMask }
         });
       }
     },
@@ -226,51 +253,62 @@ export default {
     },
     renderPopover() {
       const vnode = this.$createElement(
-        'CPopover',
+        "CPopover",
         {
           props: {
             open: this.value,
             close: this.close,
-            getReference: this.getReference,
-          },
+            getReference: this.getReference
+          }
         },
         this.$slots.content
       );
-      this.popover = new vnode.componentOptions.Ctor({
-        _isComponent: true,
-        _parentVnode: vnode,
-      });
-      vnode.componentInstance = this.popover;
-      this.popover.$mount(this.getMountNode());
+      // this.popover = new vnode.componentOptions.Ctor({
+      //   _isComponent: true
+      // });
+
+      this.__patch__(this.getMountNode(), vnode);
+      debugger;
+      this.popover = vnode.componentInstance;
+      // vnode.componentInstance = this.popover;
+      // this.popover.$mount(this.getMountNode());
+      // this.popover.$vnode = vnode;
     },
     renderBody() {
       const h = this.$createElement;
 
-      return h('template', { default: 'content' }, [this.$slots.content]);
+      return h("template", { default: "content" }, [this.$slots.content]);
     },
     createPopup(h) {
       return h(
-        'div',
+        "div",
         {
-          ref: 'popElement',
-          class: 'c-popper-popup',
-          style: { display: this.value ? '' : 'none' },
+          ref: "popElement",
+          class: "c-popper-popup",
+          style: { display: this.value ? "" : "none" }
         },
         [
-          h('div', { class: combineClassNames('c-popper-content', this.contentClass) }, [
-            this.value ? this.$slots.content : undefined,
-            this.closable
-              ? h('i', { class: 'ivu-icon c-popper-close', on: { click: this.close } })
-              : undefined,
-          ]),
-          h('i', { ref: 'arrow', class: 'c-popper-arrow' }),
+          h(
+            "div",
+            { class: combineClassNames("c-popper-content", this.contentClass) },
+            [
+              this.value ? this.$slots.content : undefined,
+              this.closable
+                ? h("i", {
+                    class: "ivu-icon c-popper-close",
+                    on: { click: this.close }
+                  })
+                : undefined
+            ]
+          ),
+          h("i", { ref: "arrow", class: "c-popper-arrow" })
         ]
       );
     },
     // TODO: chengcheng render in body better
     getMountNode() {
       if (!this.mountNode) {
-        this.mountNode = document.createElement('div');
+        this.mountNode = document.createElement("div");
         document.body.appendChild(this.mountNode);
       }
 
@@ -314,7 +352,7 @@ export default {
         this.popover.$destroy();
         this.popover = null;
       }
-    },
+    }
   },
   mounted() {
     // this.initializeObserve();
@@ -332,26 +370,26 @@ export default {
         newVnode.componentOptions.propsData.open = val;
         this.popover.$vnode.data.hook.prepatch(this.popover.$vnode, newVnode);
       }
-    },
+    }
   },
   render(h) {
-    return h('div', { class: 'c-popper' }, [
-      this.createReference(h),
+    return h("div", { class: "c-popper" }, [
+      this.createReference(h)
       // this.createMask(h),
       // this.createPopup(h),
     ]);
-  },
+  }
 };
 </script>
 
-<style lang="stylus">
+<style lang="scss">
 .c-popper {
   position: relative;
-  outline:0 none;
+  outline: 0 none;
 }
 
-.c-popper-mask{
-  position:fixed;
+.c-popper-mask {
+  position: fixed;
   top: 0;
   right: 0;
   left: 0;
@@ -359,16 +397,17 @@ export default {
   z-index: 1;
 }
 
-.c-popper-reference{
+.c-popper-reference {
+  display: inline-block;
 }
 
-.c-popper-close{
-  position:absolute;
+.c-popper-close {
+  position: absolute;
   right: 6px;
   top: 6px;
   font-size: 24px;
 
-  &::before{
+  &::before {
     content: "\F178";
   }
 }
@@ -382,75 +421,9 @@ export default {
   max-height: 80vh;
   max-width: 80vw;
   padding: 10px;
-  box-shadow: 0 1px 6px rgba(0,0,0,.2);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
   overflow: auto;
-  border-radius:4px;
+  border-radius: 4px;
   background: #fff;
-}
-
-.c-popper-arrow {
-  position: absolute;
-  border-color: transparent;
-  border-width:7px;
-  border-style: solid;
-
-  &::after{
-    border-width: 7px;
-    position: absolute;
-    border-style: solid;
-    border-color: transparent;
-  }
-
-  &.left {
-    border-right-width: 0px;
-    border-left-color: hsla(0,0%,85%,.5);
-
-    &::after{
-      content: " ";
-      bottom: -7px;
-      border-right-width: 0;
-      border-left-color: #fff;
-      left: -8px;
-    }
-  }
-
-  &.right {
-    border-left-width: 0px;
-    border-right-color: hsla(0,0%,85%,.5);
-
-    &::after{
-      content: " ";
-      bottom: -7px;
-      left: 1px;
-      border-left-width: 0;
-      border-right-color: #fff;
-    }
-  }
-
-  &.top {
-    border-bottom-width: 0px;
-    border-top-color: hsla(0,0%,85%,.5);
-
-    &::after{
-      content: " ";
-      top: -8px;
-      left: -7px;
-      border-bottom-width: 0;
-      border-top-color: #fff;
-    }
-  }
-
-  &.bottom {
-    border-top-width: 0px;
-    border-bottom-color: hsla(0,0%,85%,.5);
-
-    &::after{
-      content: " ";
-      left: -7px;
-      top: 1px;
-      border-top-width: 0;
-      border-bottom-color: #fff;
-    }
-  }
 }
 </style>
