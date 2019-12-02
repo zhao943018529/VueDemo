@@ -1,5 +1,5 @@
 <template>
-    <div class="addTodoContainer">
+    <div class="addTodoContainer" data-index="aaaa">
         <form v-on:submit.prevent="onSubmit">
             <input class="form-control" type="text" v-model="name"/>
         </form>

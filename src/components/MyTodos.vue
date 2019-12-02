@@ -46,6 +46,7 @@ export default {
   name: "mytodos",
   data() {
     return {
+      randomSay: "a",
       options: [
         { id: 1, label: "afafd", value: 111 },
         { id: 2, label: "gggg", value: 222 },
@@ -82,19 +83,25 @@ export default {
   beforeMount() {
     console.log("i am iron");
     console.log(this.$route.params);
+  },
+  methods: {
+    getSayWord() {
+      this.randomSay = String.fromCodePoint(
+        97 + Math.floor(Math.random() * 26)
+      );
+    }
   }
 };
 </script>
 
 <style lang="scss">
+.list-view {
+  width: 100px;
+  height: 300px;
+  overflow-y: auto;
+}
 
-    .list-view{
-        width:100px;
-        height: 300px;
-        overflow-y: auto;
-    }
-
-    .list-item{
-        padding:12px 10px;
-    }
+.list-item {
+  padding: 12px 10px;
+}
 </style>
