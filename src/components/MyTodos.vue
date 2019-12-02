@@ -1,10 +1,17 @@
 <template>
   <div>
+    <Poptip>
+      <div>haha</div>
+      <template #content>
+        <div>Test</div>
+      </template>
+    </Poptip>
+    <Increment />
+    <!-- <Wrapper/> -->
     <AddTodo />
     <TodoList v-bind:type="$route.params.type" />
     <TodoFooter />
-    <Increment />
-    <div style="width:40%" v-if="$route.params.type=='all'">
+    <!-- <div style="width:40%" v-if="$route.params.type=='all'">
       <el-select>
         <el-option v-for="option in options" v-bind:key="option.id" v-bind="option">
           <span>{{option.label+":"+option.value}}</span>
@@ -18,7 +25,7 @@
       <Option key="ffff" value="ggggg" />
       <Option key="kkkk" value="jjjjj" />
     </TestJSX>
-    <ListView :size="30"/>
+    <ListView :size="30"/> -->
   </div>
 </template>
 
@@ -32,6 +39,8 @@ import TestJSX from './TestJSX.jsx';
 import Option from './Option.jsx';
 import ListView from './ListView.jsx';
 import Increment from './Increment.jsx';
+import Wrapper from './Wrapper.vue';
+import Poptip from './Poptip.jsx';
 
 export default {
   name: "mytodos",
@@ -66,7 +75,9 @@ export default {
     TestJSX,
     Option,
     ListView,
-    Increment
+    Increment,
+    Wrapper,
+    Poptip,
   },
   beforeMount() {
     console.log("i am iron");
