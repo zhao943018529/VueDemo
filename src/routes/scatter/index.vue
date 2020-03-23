@@ -1,6 +1,6 @@
 <template>
   <div class="scatter-page">
-    <h1>View</h1>
+    <h2>View</h2>
     <ScatterChart />
   </div>
 </template>

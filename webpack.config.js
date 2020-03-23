@@ -16,6 +16,7 @@ module.exports = {
     chunkFilename: "[name].chunk.js",
     path: path.resolve(__dirname, "dist")
   },
+  devtool: "eval-cheap-source-map",
   mode: "development",
   module: {
     rules: [
@@ -45,8 +46,12 @@ module.exports = {
           },
           "css-loader",
           "postcss-loader",
-          "sass-loader",
+          "sass-loader"
         ]
+      },
+      {
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        loader: "url-loader?limit=100000"
       }
     ]
   },

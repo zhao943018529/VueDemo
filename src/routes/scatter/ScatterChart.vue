@@ -32,18 +32,59 @@ export default {
           id: 11,
           name: "aaa",
           type: 0,
+
           alarmLevel: 0,
           color: "green",
           children: [
-            { id: 111, name: "Defense Access", direction: 0 },
-            { id: 112, name: "Network connection", direction: 0 },
-            { id: 113, name: "Promote Access" },
-            { id: 114, name: "Accesssibility Features", direction: 0 },
-            { id: 115, name: "Accesssibility Features", direction: 0 },
-            { id: 116, name: "Data from Local System"},
-            { id: 117, name: "Data from Local System"},
-            { id: 119, name: "Data from Local System"},
-            { id: 120, name: "Password Policy Discovery"},
+            {
+              id: 111,
+              name: "Defense Access",
+              direction: 0,
+              layout: { left: 8, right: 8, height: 40 }
+            },
+            {
+              id: 112,
+              name: "Network connection",
+              direction: 0,
+              layout: { left: 8, right: 8, height: 40 }
+            },
+            {
+              id: 113,
+              name: "Promote Access",
+              layout: { left: 8, right: 8, height: 40 }
+            },
+            {
+              id: 114,
+              name: "Accesssibility Features",
+              direction: 0,
+              layout: { left: 8, right: 8, height: 40 }
+            },
+            {
+              id: 115,
+              name: "Accesssibility Features",
+              direction: 0,
+              layout: { left: 8, right: 8, height: 40 }
+            },
+            {
+              id: 116,
+              name: "Data from Local System",
+              layout: { left: 8, right: 8, height: 40 }
+            },
+            {
+              id: 117,
+              name: "Data from Local System",
+              layout: { left: 8, right: 8, height: 40 }
+            },
+            {
+              id: 119,
+              name: "Data from Local System",
+              layout: { left: 8, right: 8, height: 40 }
+            },
+            {
+              id: 120,
+              name: "Password Policy Discovery",
+              layout: { left: 8, right: 8, height: 40 }
+            }
           ]
         },
         {
@@ -52,8 +93,12 @@ export default {
           type: 1,
           color: "#4BD314",
           children: [
-            { id: 221, name: "bbb1" },
-            { id: 222, name: "bbb2" }
+            {
+              id: 221,
+              name: "bbb1",
+              layout: { left: 8, right: 8, height: 40 }
+            },
+            { id: 222, name: "bbb2", layout: { left: 8, right: 8, height: 40 } }
           ]
         },
         {
@@ -62,11 +107,37 @@ export default {
           color: "#FF2424",
           alarmLevel: 0,
           children: [
-            { id: 331, name: "Data from Local System", direction: 1 },
-            { id: 332, name: "Data from Local System", direction: 1 },
-            { id: 333, name: "Data from Local System", direction: 0 },
-            { id: 334, name: "Data from Local System", direction: 0 },
-            { id: 335, name: "192.168.134.222", time: "08:14:12", type: 1 }
+            {
+              id: 331,
+              name: "Data from Local System",
+              direction: 1,
+              layout: { left: 8, right: 8, height: 40 }
+            },
+            {
+              id: 332,
+              name: "Data from Local System",
+              direction: 1,
+              layout: { left: 8, right: 8, height: 40 }
+            },
+            {
+              id: 333,
+              name: "Data from Local System",
+              direction: 0,
+              layout: { left: 8, right: 8, height: 40 }
+            },
+            {
+              id: 334,
+              name: "Data from Local System",
+              direction: 0,
+              layout: { left: 8, right: 8, height: 40 }
+            },
+            {
+              id: 335,
+              name: "192.168.134.222",
+              time: "08:14:12",
+              type: 1,
+              layout: { left: 8, right: 8, height: 24 }
+            }
           ]
         },
         {
@@ -76,25 +147,53 @@ export default {
           alarmLevel: 1,
           color: "#4BD314",
           children: [
-            { id: 441, name: "Browser Extensions", direction: 0 },
+            {
+              id: 441,
+              name: "Browser Extensions",
+              direction: 0,
+              layout: { left: 8, right: 8, height: 40 }
+            },
             {
               id: 442,
               name: "61.2.34.19",
               direction: 0,
               type: 1,
-              time: "10:34:12"
+              time: "10:34:12",
+              layout: { left: 8, right: 8, height: 24 }
             },
             {
               id: 443,
               name: "102.123.4.0",
               direction: 1,
               type: 1,
-              time: "12:34:12"
+              time: "12:34:12",
+              layout: { left: 8, right: 8, height: 24 }
             },
-            { id: 444, name: "Data from Local System", direction: 0 },
-            { id: 445, name: "123.14.36.111", direction: 1, type: 1 },
-            { id: 446, name: "ddd6", direction: 1 },
-            { id: 447, name: "Browser Extensions", direction: 0 }
+            {
+              id: 444,
+              name: "Data from Local System",
+              direction: 0,
+              layout: { left: 8, right: 8, height: 40 }
+            },
+            {
+              id: 445,
+              name: "123.14.36.111",
+              direction: 1,
+              type: 1,
+              layout: { left: 8, right: 8, height: 24 }
+            },
+            {
+              id: 446,
+              name: "ddd6",
+              direction: 1,
+              layout: { left: 8, right: 8, height: 40 }
+            },
+            {
+              id: 447,
+              name: "Browser Extensions",
+              direction: 0,
+              layout: { left: 8, right: 8, height: 40 }
+            }
           ]
         },
         {
@@ -104,26 +203,68 @@ export default {
           alarmLevel: 1,
           color: "#FF2424",
           children: [
-            { id: 551, name: "Password Policy Discovery", direction: 0 },
+            {
+              id: 551,
+              name: "Password Policy Discovery",
+              direction: 0,
+              layout: { left: 8, right: 8, height: 40 }
+            },
             {
               id: 552,
               name: "128.189.1.143",
               direction: 1,
               type: 1,
-              time: "16:14:13"
+              time: "16:14:13",
+              layout: { left: 8, right: 8, height: 24 }
             },
-            { id: 553, name: "Accesssibility Features", direction: 0 },
-            { id: 554, name: "CMSTP", direction: 1 },
-            { id: 555, name: "BITS Jobs", direction: 0 },
+            {
+              id: 553,
+              name: "Accesssibility Features",
+              direction: 0,
+              layout: { left: 8, right: 8, height: 40 }
+            },
+            {
+              id: 554,
+              name: "CMSTP",
+              direction: 1,
+              layout: { left: 8, right: 8, height: 40 }
+            },
+            {
+              id: 555,
+              name: "BITS Jobs",
+              direction: 0,
+              layout: { left: 8, right: 8, height: 40 }
+            },
             {
               id: 556,
               name: "Exploitation for Credential Access",
-              direction: 0
+              direction: 0,
+              layout: { left: 8, right: 8, height: 40 }
             },
-            { id: 557, name: "Network Sniffing", direction: 1 },
-            { id: 558, name: "Data from Local System", direction: 1 },
-            { id: 559, name: "Network Sniffing", direction: 1 },
-            { id: 560, name: "Data from Local System", direction: 1 }
+            {
+              id: 557,
+              name: "Network Sniffing",
+              direction: 1,
+              layout: { left: 8, right: 8, height: 40 }
+            },
+            {
+              id: 558,
+              name: "Data from Local System",
+              direction: 1,
+              layout: { left: 8, right: 8, height: 40 }
+            },
+            {
+              id: 559,
+              name: "Network Sniffing",
+              direction: 1,
+              layout: { left: 8, right: 8, height: 40 }
+            },
+            {
+              id: 560,
+              name: "Data from Local System",
+              direction: 1,
+              layout: { left: 8, right: 8, height: 40 }
+            }
           ]
         }
       ]
@@ -134,28 +275,11 @@ export default {
   },
   methods: {
     createLeafBg(d, height, skewWidth, edge, delta) {
-      const width = d.width + edge * 2;
-      const x = (delta && delta.x) || 0;
-      const y = (delta && delta.y) || 0;
-      if (d.angle < 90) {
-        return `M${x + skewWidth},${y} L${x + width},${y} L${x + width},${y +
-          height -
-          skewWidth} L${x + width - skewWidth},${y + height} L${x},${y +
-          height} L${x},${y + skewWidth} z`;
-      } else if (d.angle < 180) {
-        return `M${x},${y} L${x + width - skewWidth},${y} L${x + width},${y +
-          skewWidth} L${x + width},${y + height} L${x + skewWidth},${y +
-          height} L${x},${y + height - skewWidth} z`;
-      } else if (d.angle < 270) {
-        return `M${x + skewWidth},${y} L${x + width},${y} L${x + width},${y +
-          height -
-          skewWidth} L${x + width - skewWidth},${y + height} L${x},${y +
-          height} L${x},${y + skewWidth} z`;
-      } else {
-        return `M${x},${y} L${x + width - skewWidth},${y} L${x + width},${y +
-          skewWidth} L${x + width},${y + height} L${x + skewWidth},${y +
-          height} L${x},${y + height - skewWidth} z`;
-      }
+      const area = d.area;
+
+      return `M${0},${0} L${area.width},${0} L${area.width},${
+        area.height
+      } L${0},${area.height} L${0},${0}`;
     },
     createLeafRegularBg(width, height, edge) {
       return `M0,0 L0,${edge} M${0},${height -
@@ -197,22 +321,22 @@ export default {
     },
     dragging(d) {
       const event = d3.event;
-      let dragData = {
-        id: d.data.id,
-        touch: {
-          x: event.x,
-          y: event.y
-        }
+      const touch = {
+        x: event.x,
+        y: event.y
       };
-      this.dragUpdate(dragData);
+      this.dragUpdate(d, touch);
     },
     dragEnd(d) {
       const x = d3.event.x;
       const y = d3.event.y;
-      d.x = x;
-      d.y = y;
+      // d.x = x;
+      // d.y = y;
       if (this.selectId == null) {
-        this.assets = this.chartHelper.resort();
+        this.assets = this.chartHelper.dropHandle(d, {
+          x: x,
+          y: y
+        });
       }
     },
     prepare() {
@@ -222,7 +346,7 @@ export default {
       this.chartHelper = new ScatterTool({
         layout: {
           width: rectArr[0],
-          height: rectArr[1],
+          height: rectArr[1] * 0.9,
           left: 40,
           right: 40,
           top: 0,
@@ -417,66 +541,29 @@ export default {
                   .transition(this.enterTransition)
                   .delay(d => d.index * this.delay)
                   .attr("d", d => {
+                    const a = d.target.current;
                     if (d.source.data.direction === 1) {
-                      return `M${d.target.x},${d.target.y} L${d.source.x},${d.source.y}`;
+                      return `M${a.x},${a.y} L${d.source.x + a.x},${d.source.y +
+                        a.y}`;
                     } else {
-                      return `M${d.source.x},${d.source.y} L${d.target.x},${d.target.y}`;
+                      return `M${d.source.x + a.x},${d.source.y + a.y} L${
+                        a.x
+                      },${a.y}`;
                     }
                   })
               ),
           update =>
             update.transition(moveTransition).attr("d", d => {
+              const a = d.target.current;
               if (d.source.data.direction === 1) {
-                return `M${d.target.x},${d.target.y} L${d.source.x},${d.source.y}`;
+                return `M${a.x},${a.y} L${d.source.x + a.x},${d.source.y +
+                  a.y}`;
               } else {
-                return `M${d.source.x},${d.source.y} L${d.target.x},${d.target.y}`;
+                return `M${d.source.x + a.x},${d.source.y + a.y} L${a.x},${
+                  a.y
+                }`;
               }
             }),
-          exit => exit.remove()
-        );
-      this.linkContainer
-        .selectAll("text.time")
-        .data(links, d => `${d.source.id}-${d.target.id}`)
-        .join(
-          enter => {
-            const enterG = enter
-              .append("text")
-              .attr("class", "time")
-              .attr(
-                "transform",
-                d =>
-                  `translate(${(d.source.x + d.target.x) / 2},${(d.source.y +
-                    d.target.y) /
-                    2}) rotate(${
-                    d.source.angle > 180
-                      ? d.source.angle - 270
-                      : d.source.angle - 90
-                  }) translate(${-27},0)`
-              )
-              .attr("stroke", "#BFBFBF");
-
-            enterG
-              .transition(this.enterTransition)
-              .delay(d => d.index * this.delay)
-              .text(d => d.source.data.time);
-
-            return enterG;
-          },
-          update =>
-            update
-              .text(d => d.source.data.time)
-              .transition(moveTransition)
-              .attr(
-                "transform",
-                d =>
-                  `translate(${(d.source.x + d.target.x) / 2},${(d.source.y +
-                    d.target.y) /
-                    2}) rotate(${
-                    d.source.angle > 180
-                      ? d.source.angle - 270
-                      : d.source.angle - 90
-                  }) translate(${-27},0)`
-              ),
           exit => exit.remove()
         );
     },
@@ -486,16 +573,13 @@ export default {
         .duration(this.duration)
         .ease(d3.easeLinear);
       const nodeList = this.nodeContainer
-        .selectAll("g.node")
-        .data(
-          nodes.filter(item => item.level === 0),
-          d => d.id
-        )
+        .selectAll("g.tree")
+        .data(nodes, d => d.id)
         .join(
           enter => {
             const enterG = enter
               .append("g")
-              .attr("class", "node")
+              .attr("class", "tree")
               .attr("transform", "translate(0,0)");
             enterG
               .append("use")
@@ -514,81 +598,94 @@ export default {
             enterG
               .on("dblclick", this.expandDetailDialog)
               .call(this.dragControl);
+            enterG
+              .transition(moveTransition)
+              .attr(
+                "transform",
+                d => `translate(${d.current.x},${d.current.y})`
+              );
 
             return enterG;
           },
-          update => update
+          update => {
+            return update
+              .transition(moveTransition)
+              .attr(
+                "transform",
+                d => `translate(${d.current.x},${d.current.y})`
+              );
+          }
+        );
+    },
+    renderChildren(nodes) {
+      const leafGroup = this.nodeContainer
+        .selectAll("g.leaves")
+        .data(nodes, d => `leaves-${d.id}`)
+        .join(
+          enter => enter.append("g").attr("class", "leaves"),
+          update => update,
+          exit => exit.remove()
         )
-        .transition(moveTransition)
-        .attr("transform", d => `translate(${d.x},${d.y})`);
-
-      this.nodeContainer
-        .selectAll("g.child")
+        .attr("transform", d => `translate(${d.current.x},${d.current.y})`);
+      leafGroup
+        .selectAll("g.leaf")
         .data(
-          nodes.filter(item => item.level === 1),
-          d => d.id
+          d => d.children,
+          d => `leaf-${d.id}`
         )
         .join(
           enter => {
-            const enterG = enter.append("g").attr("class", "child");
-            const largeEnter = enterG.filter(d => d.data.type !== 1);
+            const leafNode = enter.append("g").attr("class", "leaf");
+            const largeEnter = leafNode.filter(d => d.data.type !== 1);
             largeEnter
               .append("path")
               .attr("fill", "none")
               .attr("stroke", "#F79A07")
               .attr("d", d => this.createLeafBg(d, 40, 10, 12));
-            largeEnter
-              .append("path")
-              .attr("fill", "#6b460d")
-              .attr("d", d => this.createLeafBg(d, 32, 8, 8, { x: 4, y: 4 }));
-            const smallG = enterG.filter(d => d.data.type === 1);
+            // largeEnter
+            //   .append("path")
+            //   .attr("fill", "#6b460d")
+            //   .attr("d", d => this.createLeafBg(d, 32, 8, 8, { x: 4, y: 4 }));
+            const smallG = leafNode.filter(d => d.data.type === 1);
             smallG
               .append("rect")
               .attr("fill", "rgba(0,71,108,0.41)")
-              .attr("width", d => d.width + 6 * 2 + 26 + 4)
-              .attr("height", 24);
-            smallG
-              .append("path")
-              .attr("stroke", "#3BA1FF")
-              .attr("fill", "none")
-              .attr("d", d =>
-                this.createLeafRegularBg(d.width + 6 * 2 + 26 + 4, 24, 6)
-              );
+              .attr("width", d => d.area.width)
+              .attr("height", d => d.area.height);
+            // smallG
+            //   .append("path")
+            //   .attr("stroke", "#3BA1FF")
+            //   .attr("fill", "none")
+            //   .attr("d", d =>
+            //     this.createLeafRegularBg(d.width + 6 * 2 + 26 + 4, 24, 6)
+            //   );
             smallG
               .append("use")
               .attr("x", 4)
               .attr("y", 4)
               .attr("href", "#scatter-cloud")
               .attr("fill", " #3BA1FF");
-            enterG
-              .append("text")
-              .attr("dy", d => (d.data.type !== 1 ? 26 : 18))
-              .attr("dx", d => (d.data.type !== 1 ? 12 : 36))
-              .attr("fill", "#FFFFFF")
-              .text(d => d.data.name);
-            enterG.attr("transform", d => {
-              const position = this.getPosition(d);
+            // enterG
+            //   .append("text")
+            //   .attr("dy", d => (d.data.type !== 1 ? 26 : 18))
+            //   .attr("dx", d => (d.data.type !== 1 ? 12 : 36))
+            //   .attr("fill", "#FFFFFF")
+            //   .text(d => d.data.name);
+            // enterG.attr(
+            //   "transform",
+            //   d => `translate(${d.area.x},${d.area.y})`
+            // );
 
-              return `translate(${position[0]},${position[1]})`;
-            });
-
-            enterG
-              .attr("opacity", 0)
-              .transition(this.enterTransition)
-              .delay(d => d.index * this.delay)
-              .attr("opacity", 1);
-            return enterG;
+            // enterG
+            //   .attr("opacity", 0)
+            //   .transition(this.enterTransition)
+            //   .delay(d => d.index * this.delay)
+            //   .attr("opacity", 1);
+            return leafNode;
           },
-          update =>
-            update
-              .attr("opacity", 1)
-              .transition(moveTransition)
-              .attr("transform", d => {
-                const position = this.getPosition(d);
-
-                return `translate(${position[0]},${position[1]})`;
-              })
-        );
+          update => update
+        )
+        .attr("transform", d => `translate(${d.area.x},${d.area.y})`);
     },
     render() {
       let renderAssets;
@@ -599,13 +696,13 @@ export default {
       }
       // 更新drag
       // this.dragControl.on('drag', this.dragging).on('end', this.dragEnd);
-      this.chartHelper.setData(renderAssets);
-      const [nodes, links] = this.chartHelper.build();
+      const [nodes, links] = this.chartHelper.build_fit(renderAssets);
       this.renderLinks(links);
+      this.renderChildren(nodes);
       this.renderNodes(nodes);
     },
-    dragUpdate(dragData) {
-      this.chartHelper.build(dragData);
+    dragUpdate(node, touch) {
+      this.chartHelper.dragHandle(node, touch);
       const transition = d3
         .transition()
         .duration(150)
@@ -615,43 +712,46 @@ export default {
         .selectAll("path.link")
         .transition(transition)
         .attr("d", d => {
+          const current = d.target.current;
+          const source = d.source;
           if (d.source.data.direction === 1) {
-            return `M${d.target.x},${d.target.y} L${d.source.x},${d.source.y}`;
+            return `M${current.x},${current.y} L${source.x +
+              current.x},${source.y + current.y}`;
           } else {
-            return `M${d.source.x},${d.source.y} L${d.target.x},${d.target.y}`;
+            return `M${source.x + current.x},${source.y + current.y} L${
+              current.x
+            },${current.y}`;
           }
         });
 
       // 更新link文本位置
-      this.linkContainer
-        .selectAll("text.time")
-        .text(d => d.source.data.time)
-        .transition(transition)
-        .attr(
-          "transform",
-          d =>
-            `translate(${(d.source.x + d.target.x) / 2},${(d.source.y +
-              d.target.y) /
-              2}) rotate(${
-              d.source.angle > 180 ? d.source.angle - 270 : d.source.angle - 90
-            }) translate(${-27},0)`
-        );
+      // this.linkContainer
+      //   .selectAll("text.time")
+      //   .text(d => d.source.data.time)
+      //   .transition(transition)
+      //   .attr(
+      //     "transform",
+      //     d =>
+      //       `translate(${(d.source.x + d.target.x) / 2},${(d.source.y +
+      //         d.target.y) /
+      //         2}) rotate(${
+      //         d.source.angle > 180 ? d.source.angle - 270 : d.source.angle - 90
+      //       }) translate(${-27},0)`
+      //   );
 
       // 更新主机结点
       this.nodeContainer
-        .selectAll("g.node")
+        .selectAll("g.tree")
         .transition(transition)
-        .attr("transform", d => `translate(${d.x},${d.y})`);
+        .attr("transform", d => `translate(${d.current.x},${d.current.y})`);
 
       // 更新叶子结点
       this.nodeContainer
-        .selectAll("g.child")
+        .selectAll("g.leaves")
         .attr("opacity", 1)
         .transition(transition)
         .attr("transform", d => {
-          const position = this.getPosition(d);
-
-          return `translate(${position[0]},${position[1]})`;
+          return `translate(${d.current.x},${d.current.y})`;
         });
     },
     expandDetailDialog(d) {
@@ -720,5 +820,8 @@ export default {
 .scatter-container {
   flex: 1;
   position: relative;
+  box-sizing: border-box;
+  width: 1920px;
+  height: 1080px;
 }
 </style>

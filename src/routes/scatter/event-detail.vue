@@ -1,5 +1,4 @@
 <template>
-  <!-- :class="show ? 'show' : ''" -->
   <div class="assets-alarm-detail" :class="show ? 'show' : ''">
     <h4 class="assets-alarm-detail-header">
       <button
@@ -95,33 +94,34 @@ export default {
 };
 </script>
 <style lang="scss">
-.assets-alarm-detail{
+.assets-alarm-detail {
   position: absolute;
+  overflow: hidden;
   right: 0;
   bottom: 20px;
   width: 0;
   height: 0;
-  transition: all .25s ease-in-out;
-  background: rgba(0,148,255,0.26);
-  &.show{
+  transition: all 0.25s ease-in-out;
+  background: rgba(0, 148, 255, 0.26);
+  &.show {
     height: 50%;
     width: 33%;
   }
 }
 
-.assets-close{
+.assets-close {
   cursor: pointer;
   font-weight: bold;
 }
-.assets-alarm-detail-header{
+.assets-alarm-detail-header {
   padding: 8px 4px;
-  background: rgba(0,148,255,0.26);
+  background: rgba(0, 148, 255, 0.26);
 }
-.assets-ip{
+.assets-ip {
   margin-left: 20px;
 }
-.level-icon{
-    display: inline-block;
+.level-icon {
+  display: inline-block;
   vertical-align: middle;
 }
 </style>
