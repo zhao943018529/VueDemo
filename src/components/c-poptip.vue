@@ -347,10 +347,10 @@ export default {
     //   }
     // },
     destroyPopup() {
-      if (this.popover) {
-        this.popover.$destroy();
-        this.popover = null;
-      }
+      // if (this.popover) {
+      //   this.popover.$destroy();
+      //   this.popover = null;
+      // }
     }
   },
   mounted() {
@@ -361,21 +361,32 @@ export default {
     this.destroyPopup();
   },
   watch: {
-    value(val) {
-      if (!this.popover) {
-        this.renderPopover();
-      } else {
-        const newVnode = cloneVNode(this.popover.$vnode);
-        newVnode.componentOptions.propsData.open = val;
-        this.popover.$vnode.data.hook.prepatch(this.popover.$vnode, newVnode);
-      }
-    }
+    // value(val) {
+    //   if (!this.popover) {
+    //     this.renderPopover();
+    //   } else {
+    //     const newVnode = cloneVNode(this.popover.$vnode);
+    //     newVnode.componentOptions.propsData.open = val;
+    //     this.popover.$vnode.data.hook.prepatch(this.popover.$vnode, newVnode);
+    //   }
+    // }
   },
   render(h) {
     return h("div", { class: "c-popper" }, [
-      this.createReference(h)
+      this.createReference(h),
       // this.createMask(h),
       // this.createPopup(h),
+      h(
+        "CPopover",
+        {
+          props: {
+            open: this.value,
+            close: this.close,
+            getReference: this.getReference
+          }
+        },
+        this.$slots.content
+      )
     ]);
   }
 };

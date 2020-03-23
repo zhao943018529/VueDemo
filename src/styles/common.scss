@@ -21,3 +21,32 @@ input[type="radio"] {
   box-sizing: border-box;
   font-size: 16px;
 }
+
+@font-face {
+  font-family: Ionicons;
+  src: url(./styles/fonts/ionicons.143146fa.woff2) format("woff2");
+    // url(./styles/fonts/ionicons.99ac3308.woff) format("woff"),
+    // url(./styles/fonts/ionicons.d535a25a.ttf) format("truetype");
+    // url(./styles/img/ionicons.17bf2ac0.svg#Ionicons) format("svg");
+  font-weight: 400;
+  font-style: normal;
+}
+
+.ivu-icon {
+  display: inline-block;
+  font-family: Ionicons;
+  speak: none;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  text-rendering: auto;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+}
+
+.ivu-icon-ios-arrow-down:before {
+  content: "\F116";
+}

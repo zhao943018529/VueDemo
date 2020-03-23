@@ -254,11 +254,12 @@ export default {
     }
   },
   mounted() {
+    this.body.appendChild(this.$el);
     this.scrollContainer = getScrollParent(this.getReference());
     this.align();
   },
   destroyed() {
-    this.$el.parentNode.removeChild(this.$el);
+    // this.$el.parentNode.removeChild(this.$el);
   },
   render(h) {
     return h(
