@@ -12,9 +12,13 @@ export default {
 
 <style lang="scss">
 @import "./styles/common.scss";
+#app {
+  height: 100%;
+}
 
 .app-contianer {
-  width: 60%;
+  height: 100%;
+  // width: 60%;
   margin: 0 auto;
   border: 1px solid #42e86b;
   overflow: auto;
