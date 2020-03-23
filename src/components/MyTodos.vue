@@ -27,14 +27,15 @@
       <Option key="kkkk" value="jjjjj" />
     </TestJSX>
     <ListView :size="30"/> -->
-    <div>
+    <button @click="this.togglePoptip">Toggle</button>
+    <div v-if="show">
       <Poptip>
         <button>I'm Iron</button>
         <template #content>
           <div
             :style="{ width: '400px', height: '300px', background: 'green' }"
           >
-            I'm not robot!!!
+            <Increment />
           </div>
         </template>
       </Poptip>
@@ -60,6 +61,7 @@ export default {
   data() {
     return {
       randomSay: "a",
+      show:true,
       options: [
         { id: 1, label: "afafd", value: 111 },
         { id: 2, label: "gggg", value: 222 },
@@ -98,6 +100,9 @@ export default {
     console.log(this.$route.params);
   },
   methods: {
+    togglePoptip(){
+      this.show=!this.show;
+    },
     getSayWord() {
       this.randomSay = String.fromCodePoint(
         97 + Math.floor(Math.random() * 26)

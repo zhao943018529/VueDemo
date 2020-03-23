@@ -6,7 +6,8 @@ export default {
   props: {
     open: Boolean,
     close: Function,
-    getReference: Function
+    getReference: Function,
+    parent: Object
   },
   data() {
     return {
@@ -103,7 +104,10 @@ export default {
                   popoverRect.height * 0.5,
                 scrollRect.top
               ),
-              referenceRect.top + referenceRect.height * 0.5
+              Math.min(
+                referenceRect.top + referenceRect.height * 0.5,
+                scrollRect.bottom - popoverRect.height
+              )
             );
           } else {
             top = Math.min(
@@ -113,7 +117,10 @@ export default {
                   popoverRect.height * 0.5,
                 winRect.top
               ),
-              referenceRect.top + referenceRect.height * 0.5
+              Math.min(
+                referenceRect.top + referenceRect.height * 0.5,
+                winRect.bottom - popoverRect.height
+              )
             );
           }
           break;
@@ -127,7 +134,10 @@ export default {
                   popoverRect.height * 0.5,
                 scrollRect.top
               ),
-              referenceRect.top + referenceRect.height * 0.5
+              Math.min(
+                referenceRect.top + referenceRect.height * 0.5,
+                scrollRect.bottom - popoverRect.height
+              )
             );
           } else {
             top = Math.min(
@@ -137,7 +147,10 @@ export default {
                   popoverRect.height * 0.5,
                 winRect.top
               ),
-              referenceRect.top + referenceRect.height * 0.5
+              Math.min(
+                referenceRect.top + referenceRect.height * 0.5,
+                winRect.bottom - popoverRect.height
+              )
             );
           }
           break;
@@ -151,7 +164,10 @@ export default {
                   popoverRect.width * 0.5,
                 scrollRect.left + this.edge
               ),
-              referenceRect.left + referenceRect.width * 0.5
+              Math.min(
+                referenceRect.left + referenceRect.width * 0.5,
+                scrollRect.right - popoverRect.width
+              )
             );
           } else {
             left = Math.min(
@@ -161,7 +177,10 @@ export default {
                   referenceRect.width * 0.5 -
                   popoverRect.width * 0.5
               ),
-              referenceRect.left + referenceRect.width * 0.5
+              Math.min(
+                referenceRect.left + referenceRect.width * 0.5,
+                winRect.right - popoverRect.width
+              )
             );
           }
           break;
@@ -175,7 +194,10 @@ export default {
                   popoverRect.width * 0.5,
                 scrollRect.left + this.edge
               ),
-              referenceRect.left + referenceRect.width * 0.5
+              Math.min(
+                referenceRect.left + referenceRect.width * 0.5,
+                scrollRect.right - popoverRect.width
+              )
             );
           } else {
             left = Math.min(
@@ -185,7 +207,10 @@ export default {
                   referenceRect.width * 0.5 -
                   popoverRect.width * 0.5
               ),
-              referenceRect.left + referenceRect.width * 0.5
+              Math.min(
+                referenceRect.left + referenceRect.width * 0.5,
+                winRect.right - popoverRect.width
+              )
             );
           }
           break;
@@ -216,16 +241,18 @@ export default {
           break;
         case "top":
           arrowLeft =
-            Math.min(left + popoverRect.width, referenceRect.right) -
-            Math.max(left, referenceRect.left) * 0.5 +
+            (Math.min(left + popoverRect.width, referenceRect.right) -
+              Math.max(left, referenceRect.left)) *
+              0.5 +
             Math.max(referenceRect.left - left) -
             7;
           arrowTop = popoverRect.height;
           break;
         case "bottom":
           arrowLeft =
-            Math.min(left + popoverRect.width, referenceRect.right) -
-            Math.max(left, referenceRect.left) * 0.5 +
+            (Math.min(left + popoverRect.width, referenceRect.right) -
+              Math.max(left, referenceRect.left)) *
+              0.5 +
             Math.max(referenceRect.left - left, 0) -
             7;
           arrowTop = -7;
@@ -235,7 +262,7 @@ export default {
       }
       this.$refs.arrow.style.left = arrowLeft + "px";
       this.$refs.arrow.style.top = arrowTop + "px";
-      this.$refs.arrow.classList.add(placement);
+      this.$refs.arrow.className = `popover-arrow ${placement}`;
       this.$el.style.left = left + "px";
       this.$el.style.top = top + "px";
       this.$el.style.display = "";

@@ -19,6 +19,38 @@
 //     </div>
 //   </div>
 // </template>
+/***
+ *           _c(
+            "Poptip",
+            {
+              scopedSlots: _vm._u([
+                {
+                  key: "content",
+                  fn: function() {
+                    return [
+                      _c(
+                        "div",
+                        {
+                          style: {
+                            width: "400px",
+                            height: "300px",
+                            background: "green"
+                          }
+                        },
+                        [_vm._v("\n          I'm not robot!!!\n        ")]
+                      )
+                    ]
+                  },
+                  proxy: true
+                }
+              ])
+            },
+            [_c("button", [_vm._v("I'm Iron")])]
+          )
+ * 
+ * 
+ * 
+ */
 import _ from "lodash";
 import CPopover from "./c-popover.vue";
 import { cloneVNode, combineClassNames } from "./util.js";
@@ -258,11 +290,16 @@ export default {
           props: {
             open: this.value,
             close: this.close,
-            getReference: this.getReference
+            getReference: this.getReference,
+            parent: this
           }
         },
         this.$slots.content
       );
+      const vm = this;
+      vnode.componentOptions.Ctor.options.beforeCreate.unshift(function(){
+        this.$options.parent= vm;
+      });
       // this.popover = new vnode.componentOptions.Ctor({
       //   _isComponent: true
       // });
