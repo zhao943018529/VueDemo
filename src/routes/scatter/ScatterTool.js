@@ -140,18 +140,18 @@ export default class ScatterTool {
       const yAxis = Math.min(b2, y2) - Math.max(b1, y1);
 
       if (xAxis > 0 && yAxis > 0) {
-        if (xAxis < yAxis) {
-          if (other.origin.x < node.current.x) {
-            other.current.x = other.origin.x + xAxis;
-          } else {
-            other.current.x = other.origin.x + xAxis;
-          }
-        } else {
-          if (other.origin.y < node.current.y) {
-            other.current.y = other.origin.y - yAxis;
-          } else {
-            other.current.y = other.origin.y + yAxis;
-          }
+        const top = b2 - y1;
+        const bottom = y2 - b1;
+        const left = a2-x1;
+        const right = x2-a1;
+        if(top<bottom&&top<left&&top<right){
+          
+        }else if(bottom<left&&bottom<right){
+
+        }else if(left<right){
+
+        }else{
+
         }
 
         return true;

@@ -409,7 +409,7 @@ export default {
         });
       this.root.call(this.zoomControl).on("dblclick.zoom", null);
       // 初始化移动动画
-      this.moveTransition = d3
+      this.moveTransition = this.root
         .transition()
         .duration(this.duration)
         .ease(d3.easeLinear);
@@ -506,10 +506,6 @@ export default {
       this.render();
     },
     renderLinks(links) {
-      let moveTransition = d3
-        .transition()
-        .duration(this.duration)
-        .ease(d3.easeLinear);
       this.linkContainer
         .selectAll("path.link")
         .data(links, d => `${d.source.id}-${d.target.id}`)
@@ -553,7 +549,7 @@ export default {
                   })
               ),
           update =>
-            update.transition(moveTransition).attr("d", d => {
+            update.transition(this.moveTransition).attr("d", d => {
               const a = d.target.current;
               if (d.source.data.direction === 1) {
                 return `M${a.x},${a.y} L${d.source.x + a.x},${d.source.y +
@@ -568,13 +564,9 @@ export default {
         );
     },
     renderNodes(nodes) {
-      let moveTransition = d3
-        .transition()
-        .duration(this.duration)
-        .ease(d3.easeLinear);
       const nodeList = this.nodeContainer
         .selectAll("g.tree")
-        .data(nodes, d => d.id)
+        .data(nodes, d => `main-${d.id}`)
         .join(
           enter => {
             const enterG = enter
@@ -595,27 +587,15 @@ export default {
                 d.data.alarmLevel > 0 ? "#FF2424" : "#FF7615"
               );
 
-            enterG
-              .on("dblclick", this.expandDetailDialog)
-              .call(this.dragControl);
-            enterG
-              .transition(moveTransition)
-              .attr(
-                "transform",
-                d => `translate(${d.current.x},${d.current.y})`
-              );
-
             return enterG;
           },
-          update => {
-            return update
-              .transition(moveTransition)
-              .attr(
-                "transform",
-                d => `translate(${d.current.x},${d.current.y})`
-              );
-          }
-        );
+          update => update,
+          exit => exit.remove()
+        )
+        .on("dblclick", this.expandDetailDialog)
+        .call(this.dragControl)
+        .transition(this.moveTransition)
+        .attr("transform", d => `translate(${d.current.x},${d.current.y})`);
     },
     renderChildren(nodes) {
       const leafGroup = this.nodeContainer
@@ -625,8 +605,7 @@ export default {
           enter => enter.append("g").attr("class", "leaves"),
           update => update,
           exit => exit.remove()
-        )
-        .attr("transform", d => `translate(${d.current.x},${d.current.y})`);
+        );
       leafGroup
         .selectAll("g.leaf")
         .data(
@@ -686,6 +665,9 @@ export default {
           update => update
         )
         .attr("transform", d => `translate(${d.area.x},${d.area.y})`);
+      leafGroup
+        .transition(this.moveTransition)
+        .attr("transform", d => `translate(${d.current.x},${d.current.y})`);
     },
     render() {
       let renderAssets;
@@ -748,11 +730,8 @@ export default {
       // 更新叶子结点
       this.nodeContainer
         .selectAll("g.leaves")
-        .attr("opacity", 1)
         .transition(transition)
-        .attr("transform", d => {
-          return `translate(${d.current.x},${d.current.y})`;
-        });
+        .attr("transform", d => `translate(${d.current.x},${d.current.y})`);
     },
     expandDetailDialog(d) {
       if (d3.event.defaultPrevented) return;
