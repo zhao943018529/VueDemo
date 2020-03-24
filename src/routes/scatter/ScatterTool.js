@@ -119,6 +119,9 @@ export default class ScatterTool {
     const others = this.nodes.filter(item => node !== item);
     node.current.x = touch.x;
     node.current.y = touch.y;
+    _.each(others, item => {
+      Object.assign(item.current, item.origin);
+    });
     this.clearOverlap(node, others);
   }
 
@@ -142,16 +145,16 @@ export default class ScatterTool {
       if (xAxis > 0 && yAxis > 0) {
         const top = b2 - y1;
         const bottom = y2 - b1;
-        const left = a2-x1;
-        const right = x2-a1;
-        if(top<bottom&&top<left&&top<right){
-          
-        }else if(bottom<left&&bottom<right){
-
-        }else if(left<right){
-
-        }else{
-
+        const left = a2 - x1;
+        const right = x2 - a1;
+        if (top < bottom && top < left && top < right) {
+          other.current.y -= top;
+        } else if (bottom < left && bottom < right) {
+          other.current.y += bottom;
+        } else if (left < right) {
+          other.current.x -= left;
+        } else {
+          other.current.x += right;
         }
 
         return true;

@@ -40,50 +40,50 @@ export default {
               id: 111,
               name: "Defense Access",
               direction: 0,
-              layout: { left: 8, right: 8, height: 40 }
+              layout: { left: 8, right: 12, height: 40 }
             },
             {
               id: 112,
               name: "Network connection",
               direction: 0,
-              layout: { left: 8, right: 8, height: 40 }
+              layout: { left: 8, right: 12, height: 40 }
             },
             {
               id: 113,
               name: "Promote Access",
-              layout: { left: 8, right: 8, height: 40 }
+              layout: { left: 8, right: 12, height: 40 }
             },
             {
               id: 114,
               name: "Accesssibility Features",
               direction: 0,
-              layout: { left: 8, right: 8, height: 40 }
+              layout: { left: 8, right: 12, height: 40 }
             },
             {
               id: 115,
               name: "Accesssibility Features",
               direction: 0,
-              layout: { left: 8, right: 8, height: 40 }
+              layout: { left: 8, right: 12, height: 40 }
             },
             {
               id: 116,
               name: "Data from Local System",
-              layout: { left: 8, right: 8, height: 40 }
+              layout: { left: 8, right: 12, height: 40 }
             },
             {
               id: 117,
               name: "Data from Local System",
-              layout: { left: 8, right: 8, height: 40 }
+              layout: { left: 8, right: 12, height: 40 }
             },
             {
               id: 119,
               name: "Data from Local System",
-              layout: { left: 8, right: 8, height: 40 }
+              layout: { left: 8, right: 12, height: 40 }
             },
             {
               id: 120,
               name: "Password Policy Discovery",
-              layout: { left: 8, right: 8, height: 40 }
+              layout: { left: 8, right: 12, height: 40 }
             }
           ]
         },
@@ -96,9 +96,14 @@ export default {
             {
               id: 221,
               name: "bbb1",
-              layout: { left: 8, right: 8, height: 40 }
+              layout: { left: 8, right: 12, height: 40 }
             },
-            { id: 222, name: "bbb2", layout: { left: 8, right: 8, height: 40 } }
+            {
+              id: 222,
+              name:
+                "bbb2 System Accesssibility Features System Accesssibility Features",
+              layout: { left: 8, right: 12, height: 40 }
+            }
           ]
         },
         {
@@ -111,32 +116,32 @@ export default {
               id: 331,
               name: "Data from Local System",
               direction: 1,
-              layout: { left: 8, right: 8, height: 40 }
+              layout: { left: 8, right: 12, height: 40 }
             },
             {
               id: 332,
               name: "Data from Local System",
               direction: 1,
-              layout: { left: 8, right: 8, height: 40 }
+              layout: { left: 8, right: 12, height: 40 }
             },
             {
               id: 333,
-              name: "Data from Local System",
+              name: "Data from Local",
               direction: 0,
-              layout: { left: 8, right: 8, height: 40 }
+              layout: { left: 8, right: 12, height: 40 }
             },
             {
               id: 334,
               name: "Data from Local System",
               direction: 0,
-              layout: { left: 8, right: 8, height: 40 }
+              layout: { left: 8, right: 12, height: 40 }
             },
             {
               id: 335,
               name: "192.168.134.222",
               time: "08:14:12",
               type: 1,
-              layout: { left: 8, right: 8, height: 24 }
+              layout: { left: 28, right: 12, height: 24 }
             }
           ]
         },
@@ -151,7 +156,7 @@ export default {
               id: 441,
               name: "Browser Extensions",
               direction: 0,
-              layout: { left: 8, right: 8, height: 40 }
+              layout: { left: 8, right: 12, height: 40 }
             },
             {
               id: 442,
@@ -159,7 +164,7 @@ export default {
               direction: 0,
               type: 1,
               time: "10:34:12",
-              layout: { left: 8, right: 8, height: 24 }
+              layout: { left: 28, right: 12, height: 24 }
             },
             {
               id: 443,
@@ -167,32 +172,32 @@ export default {
               direction: 1,
               type: 1,
               time: "12:34:12",
-              layout: { left: 8, right: 8, height: 24 }
+              layout: { left: 28, right: 12, height: 24 }
             },
             {
               id: 444,
               name: "Data from Local System",
               direction: 0,
-              layout: { left: 8, right: 8, height: 40 }
+              layout: { left: 8, right: 12, height: 40 }
             },
             {
               id: 445,
               name: "123.14.36.111",
               direction: 1,
               type: 1,
-              layout: { left: 8, right: 8, height: 24 }
+              layout: { left: 28, right: 12, height: 24 }
             },
             {
               id: 446,
               name: "ddd6",
               direction: 1,
-              layout: { left: 8, right: 8, height: 40 }
+              layout: { left: 8, right: 12, height: 40 }
             },
             {
               id: 447,
               name: "Browser Extensions",
               direction: 0,
-              layout: { left: 8, right: 8, height: 40 }
+              layout: { left: 8, right: 12, height: 40 }
             }
           ]
         },
@@ -207,7 +212,7 @@ export default {
               id: 551,
               name: "Password Policy Discovery",
               direction: 0,
-              layout: { left: 8, right: 8, height: 40 }
+              layout: { left: 8, right: 12, height: 40 }
             },
             {
               id: 552,
@@ -215,55 +220,55 @@ export default {
               direction: 1,
               type: 1,
               time: "16:14:13",
-              layout: { left: 8, right: 8, height: 24 }
+              layout: { left: 28, right: 8, height: 24 }
             },
             {
               id: 553,
               name: "Accesssibility Features",
               direction: 0,
-              layout: { left: 8, right: 8, height: 40 }
+              layout: { left: 8, right: 12, height: 40 }
             },
             {
               id: 554,
               name: "CMSTP",
               direction: 1,
-              layout: { left: 8, right: 8, height: 40 }
+              layout: { left: 8, right: 12, height: 40 }
             },
             {
               id: 555,
               name: "BITS Jobs",
               direction: 0,
-              layout: { left: 8, right: 8, height: 40 }
+              layout: { left: 8, right: 12, height: 40 }
             },
             {
               id: 556,
-              name: "Exploitation for Credential Access",
+              name: "Exploitation for Credential",
               direction: 0,
-              layout: { left: 8, right: 8, height: 40 }
+              layout: { left: 8, right: 12, height: 40 }
             },
             {
               id: 557,
               name: "Network Sniffing",
               direction: 1,
-              layout: { left: 8, right: 8, height: 40 }
+              layout: { left: 8, right: 12, height: 40 }
             },
             {
               id: 558,
               name: "Data from Local System",
               direction: 1,
-              layout: { left: 8, right: 8, height: 40 }
+              layout: { left: 8, right: 12, height: 40 }
             },
             {
               id: 559,
               name: "Network Sniffing",
               direction: 1,
-              layout: { left: 8, right: 8, height: 40 }
+              layout: { left: 8, right: 12, height: 40 }
             },
             {
               id: 560,
               name: "Data from Local System",
               direction: 1,
-              layout: { left: 8, right: 8, height: 40 }
+              layout: { left: 8, right: 12, height: 40 }
             }
           ]
         }
@@ -274,12 +279,36 @@ export default {
     this.initialize();
   },
   methods: {
-    createLeafBg(d, height, skewWidth, edge, delta) {
+    createLeafBg(d, skewWidth, delta) {
       const area = d.area;
+      const x = (delta && delta.x) || 0;
+      const y = (delta && delta.y) || 0;
 
-      return `M${0},${0} L${area.width},${0} L${area.width},${
-        area.height
-      } L${0},${area.height} L${0},${0}`;
+      if (d.angle < 90) {
+        return `M${skewWidth + x},${y} L${area.width - x},${y} L${area.width -
+          x},${area.height - skewWidth - y} L${area.width -
+          skewWidth -
+          x},${area.height - y} L${x},${area.height - y} L${x},${skewWidth +
+          y} z`;
+      } else if (d.angle < 180) {
+        return `M${x},${y} L${area.width - skewWidth - x},${y} L${area.width -
+          x},${skewWidth + y} L${area.width - x},${area.height -
+          y} L${skewWidth + x},${area.height - y} L${x},${area.height -
+          skewWidth -
+          y} L${x},${y}`;
+      } else if (d.angle < 270) {
+        return `M${skewWidth + x},${y} L${area.width - x},${y} L${area.width -
+          x},${area.height - skewWidth - y} L${area.width -
+          skewWidth -
+          x},${area.height - y} L${x},${area.height - y} L${x},${skewWidth +
+          y} L${skewWidth + x},${y}`;
+      } else {
+        return `M${x},${y} L${area.width - skewWidth - x},${y} L${area.width -
+          x},${skewWidth + y} L${area.width - x},${area.height -
+          y} L${skewWidth + x},${area.height - y} L${x},${area.height -
+          skewWidth -
+          y} L${x},${y} z`;
+      }
     },
     createLeafRegularBg(width, height, edge) {
       return `M0,0 L0,${edge} M${0},${height -
@@ -499,6 +528,29 @@ export default {
           "d",
           "M14,22 L14,20 L7,20 C6.44771525,20 6,19.5522847 6,19 L6,9 C6,8.44771525 6.44771525,8 7,8 L23,8 C23.5522847,8 24,8.44771525 24,9 L24,19 C24,19.5522847 23.5522847,20 23,20 L16,20 L16,22 L20,22 L20,24 L10,24 L10,22 L14,22 Z M13,12 L13,13 L18,13 L18,12 L13,12 Z M9,12 L9,13 L11,13 L11,12 L9,12 Z M9,15 L9,16 L11,16 L11,15 L9,15 Z M13,15 L13,16 L21,16 L21,15 L13,15 Z"
         );
+      // 插入固定器
+      const scatterFix = container
+        .append("symbol")
+        .attr("id", "scatter-fix")
+        .attr("fill-rule", "nonzero")
+        .attr("viewBox", "0 0 14 14")
+        .attr(
+          "transform",
+          "translate(7.000000, 7.000000) scale(-1, 1) translate(-7.000000, -7.000000)"
+        );
+      scatterFix
+        .append("rect")
+        .attr("x", 0)
+        .attr("y", 0)
+        .attr("width", 14)
+        .attr("height", 14)
+        .attr("fill", "rgba(255,255,255,0.16)");
+      scatterFix
+        .append("path")
+        .attr(
+          "d",
+          "M13.1099609,12.2472656 L10.0078125,9.14511719 L9.14648438,10.0064453 L12.25,13.1085937 L13.125,13.1263672 L13.1099609,12.2472656 Z M10.8322266,5.18164063 L9.43085938,5.00800781 L5.17890625,1.115625 C4.834375,0.7875 4.28066406,0.795703125 3.94707031,1.12929688 L1.13066406,3.94433594 C0.794335937,4.28066406 0.788867187,4.834375 1.115625,5.17753906 L5.009375,9.43085938 L5.18300781,10.8322266 C5.18300781,11.8535156 5.93632813,12.2636719 6.65957031,11.5390625 L11.5390625,6.65957031 C12.2636719,5.93496094 11.8548828,5.18164063 10.8322266,5.18164063 Z M6.01152344,8.34121094 C5.95410156,8.39863281 5.87890625,8.42871094 5.79824219,8.42871094 C5.71757812,8.42871094 5.64238281,8.39726562 5.58359375,8.33984375 L2.1109375,4.86308594 C1.99609375,4.74824219 1.99335938,4.55546875 2.10820313,4.43925781 L2.70566406,3.82402344 C2.76308594,3.76386719 2.83828125,3.73242188 2.92304687,3.73242188 C3.00097656,3.73242188 3.07617188,3.76386719 3.13222656,3.81855469 C3.19101563,3.87324219 3.22109375,3.94980469 3.22519531,4.02910156 C3.2265625,4.10976562 3.19648437,4.18632813 3.1390625,4.24511719 L2.74941406,4.64570312 L6.01152344,7.91328125 C6.12910156,8.03085938 6.12773438,8.22226563 6.01152344,8.34121094 L6.01152344,8.34121094 Z"
+        );
     },
     initialize() {
       // 执行prepare
@@ -562,6 +614,47 @@ export default {
             }),
           exit => exit.remove()
         );
+      this.linkContainer
+        .selectAll("text.time")
+        .data(links, d => `${d.source.id}-${d.target.id}`)
+        .join(
+          enter => {
+            const enterG = enter
+              .append("text")
+              .attr("class", "time")
+              .attr("transform", d => {
+                const current = d.target.current;
+                const source = d.source;
+
+                return `translate(${(current.x + current.x + source.x) /
+                  2},${(source.y + current.y + current.y) / 2}) rotate(${
+                  source.angle > 180 ? source.angle - 270 : source.angle - 90
+                }) translate(${-27},0)`;
+              })
+              .attr("stroke", "#BFBFBF");
+
+            enterG
+              .transition(this.enterTransition)
+              .delay(d => d.index * this.delay)
+              .text(d => d.source.data.time);
+
+            return enterG;
+          },
+          update =>
+            update
+              .text(d => d.source.data.time)
+              .transition(this.moveTransition)
+              .attr("transform", d => {
+                const current = d.target.current;
+                const source = d.source;
+
+                return `translate(${(current.x + current.x + source.x) /
+                  2},${(source.y + current.y + current.y) / 2}) rotate(${
+                  source.angle > 180 ? source.angle - 270 : source.angle - 90
+                }) translate(${-27},0)`;
+              }),
+          exit => exit.remove()
+        );
     },
     renderNodes(nodes) {
       const nodeList = this.nodeContainer
@@ -586,6 +679,19 @@ export default {
               .attr("fill", d =>
                 d.data.alarmLevel > 0 ? "#FF2424" : "#FF7615"
               );
+            enterG
+              .append("use")
+              .attr("x", -10)
+              .attr("y", -25)
+              .attr("width", 14)
+              .attr("height", 14)
+              .attr("cursor", "pointer")
+              .attr("fill", "#44E5FF")
+              .attr(
+                "transform",
+                "translate(7.000000, 7.000000) scale(-1, 1) translate(-7.000000, -7.000000)"
+              )
+              .attr("href", "#scatter-fix");
 
             return enterG;
           },
@@ -614,57 +720,48 @@ export default {
         )
         .join(
           enter => {
-            const leafNode = enter.append("g").attr("class", "leaf");
+            const leafNode = enter
+              .append("g")
+              .attr("class", "leaf")
+              .attr("transform", "translate(0,0)");
             const largeEnter = leafNode.filter(d => d.data.type !== 1);
             largeEnter
               .append("path")
               .attr("fill", "none")
               .attr("stroke", "#F79A07")
-              .attr("d", d => this.createLeafBg(d, 40, 10, 12));
-            // largeEnter
-            //   .append("path")
-            //   .attr("fill", "#6b460d")
-            //   .attr("d", d => this.createLeafBg(d, 32, 8, 8, { x: 4, y: 4 }));
+              .attr("d", d => this.createLeafBg(d, 4));
+            largeEnter
+              .append("path")
+              .attr("fill", "#6b460d")
+              .attr("d", d => this.createLeafBg(d, 4, { x: 4, y: 4 }));
             const smallG = leafNode.filter(d => d.data.type === 1);
             smallG
               .append("rect")
               .attr("fill", "rgba(0,71,108,0.41)")
               .attr("width", d => d.area.width)
               .attr("height", d => d.area.height);
-            // smallG
-            //   .append("path")
-            //   .attr("stroke", "#3BA1FF")
-            //   .attr("fill", "none")
-            //   .attr("d", d =>
-            //     this.createLeafRegularBg(d.width + 6 * 2 + 26 + 4, 24, 6)
-            //   );
             smallG
               .append("use")
               .attr("x", 4)
               .attr("y", 4)
               .attr("href", "#scatter-cloud")
               .attr("fill", " #3BA1FF");
-            // enterG
-            //   .append("text")
-            //   .attr("dy", d => (d.data.type !== 1 ? 26 : 18))
-            //   .attr("dx", d => (d.data.type !== 1 ? 12 : 36))
-            //   .attr("fill", "#FFFFFF")
-            //   .text(d => d.data.name);
-            // enterG.attr(
-            //   "transform",
-            //   d => `translate(${d.area.x},${d.area.y})`
-            // );
+            leafNode
+              .append("text")
+              .attr("dy", d => (d.data.type !== 1 ? 26 : 18))
+              .attr("dx", d => (d.data.type !== 1 ? 12 : 36))
+              .attr("fill", "#FFFFFF")
+              .text(d => d.data.name);
 
-            // enterG
-            //   .attr("opacity", 0)
-            //   .transition(this.enterTransition)
-            //   .delay(d => d.index * this.delay)
-            //   .attr("opacity", 1);
+            leafNode
+              .transition(this.enterTransition)
+              .delay(d => d.index * this.delay)
+              .attr("transform", d => `translate(${d.area.x},${d.area.y})`);
             return leafNode;
           },
-          update => update
-        )
-        .attr("transform", d => `translate(${d.area.x},${d.area.y})`);
+          update =>
+            update.attr("transform", d => `translate(${d.area.x},${d.area.y})`)
+        );
       leafGroup
         .transition(this.moveTransition)
         .attr("transform", d => `translate(${d.current.x},${d.current.y})`);
@@ -706,20 +803,20 @@ export default {
           }
         });
 
-      // 更新link文本位置
-      // this.linkContainer
-      //   .selectAll("text.time")
-      //   .text(d => d.source.data.time)
-      //   .transition(transition)
-      //   .attr(
-      //     "transform",
-      //     d =>
-      //       `translate(${(d.source.x + d.target.x) / 2},${(d.source.y +
-      //         d.target.y) /
-      //         2}) rotate(${
-      //         d.source.angle > 180 ? d.source.angle - 270 : d.source.angle - 90
-      //       }) translate(${-27},0)`
-      //   );
+      // 更新link文本位置;
+      this.linkContainer
+        .selectAll("text.time")
+        .text(d => d.source.data.time)
+        .transition(transition)
+        .attr("transform", d => {
+          const current = d.target.current;
+          const source = d.source;
+
+          return `translate(${(current.x + current.x + source.x) /
+            2},${(source.y + current.y + current.y) / 2}) rotate(${
+            source.angle > 180 ? source.angle - 270 : source.angle - 90
+          }) translate(${-27},0)`;
+        });
 
       // 更新主机结点
       this.nodeContainer
